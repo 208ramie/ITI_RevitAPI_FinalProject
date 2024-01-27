@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>ITI_RevitAPI_FinalProject</Name>
+		<Assembly>ITI_RevitAPI_FinalProject.dll</Assembly>
+		<AddInId>
+			E7ABF7E6-F3F0-4665-9D93-59E3AD070BA7
+		</AddInId>
+		<FullClassName>ITI_RevitAPI_FinalProject.RevitManager.ExternalApp</FullClassName>
+		<VendorId>ITI</VendorId>
+	</AddIn>
+</RevitAddIns>
