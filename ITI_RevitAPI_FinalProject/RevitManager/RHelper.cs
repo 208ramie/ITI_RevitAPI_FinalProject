@@ -15,24 +15,22 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
     [Transaction(TransactionMode.Manual)]
     public class RHelper
     {
-        //// Global variables
-        //public UIDocument UiDocument { get; set; }
-        //public Document Document { get; set; }
 
-        //public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
-        //{
-        //    UiDocument = commandData.Application.ActiveUIDocument;
-        //    Document = UiDocument.Document;
-        //    return Result.Succeeded;
-        //}
+        #region UIDoc and Doc
+        private static UIDocument _uiDoc;
+        public static UIDocument UIDoc
+        {
+            get => _uiDoc;
+            set
+            {
+                _uiDoc = value;
+                Doc = value.Document;
+            }
+        }
+        public static Document Doc { get; set; }
+        #endregion
 
-        //public List<Level> GetDocumentLevels(Document doc)
-        //{
-        //    return null;
-        //}
-
-
-
+        #region Helpers
         public static void TDError(Exception ex)
             => TaskDialog.Show("Error", ex.Message);
 
@@ -44,60 +42,53 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
 
         public static double ToIU(double millimeters)
             => UnitUtils.ConvertToInternalUnits(millimeters, UnitTypeId.Millimeters);
-
-
-
-
-
-        #region Get all levels in project
-
-        public List<Level> GetAllLevelsInDocument(Document doc)
-            =>  new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Levels).WhereElementIsNotElementType().Cast<Level>().ToList(); 
-
-
         #endregion
 
+        #region Helpers to core methods
+        //public List<Level> GetAllLevelsInDocument(Document doc)
+        //    =>  new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Levels).WhereElementIsNotElementType().Cast<Level>().ToList();
+        public static List<Level> GetAllLevelsInDocument()
+            => new FilteredElementCollector(Doc).OfClass(typeof(Level)).Cast<Level>().ToList(); 
+        #endregion
 
-
-
-
-        #region Create View
-
-        // You should understand what is a view plan type
-
-        public ViewPlan CreateViewPlan(Document doc, Level targetLevel, string viewName,
-            ViewPlanType viewPlanType = ViewPlanType.FloorPlan)
+        #region Core methods
+        public static ViewPlan CreateViewPlan(Level targetLevel = null, string viewName = "NewLevel")
         {
-            if (!GetAllLevelsInDocument(doc).Contains(targetLevel))
+            if (targetLevel == null)
             {
-                TDError("This level doesn't exist in the project");
-                return null;
+                targetLevel = GetAllLevelsInDocument().OrderBy(x => x.Elevation).FirstOrDefault(); 
             }
 
-            using (Transaction trans = new Transaction(doc, "Create a view plan"))
+            // Get the floor plan view family
+            ViewFamilyType viewFamily = new FilteredElementCollector(Doc).OfClass(typeof(ViewFamilyType))
+                .Cast<ViewFamilyType>().FirstOrDefault(f => f.ViewFamily == ViewFamily.FloorPlan);
+            try
             {
-                ViewPlan createdViewPlan = ViewPlan.Create(doc, , targetLevel.Id);
+                using (Transaction trans = new Transaction(Doc, "Create floor plan"))
+                {
+                    trans.Start();
+                    // Create a new view plan
+                    ViewPlan newViewPlan = ViewPlan.Create(Doc, viewFamily?.Id, targetLevel.Id);
+                    newViewPlan.Name = viewName;
+                    trans.Commit();
+                    return newViewPlan;
+                }
+            }
+            catch (Exception e)
+            {
+                TDError(e);
+                return null;
             }
         }
 
-
-
-        public List<ViewFamilyType> GetAllViewFamilyTypes(Document doc)
-            => new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType))
-                .Cast<ViewFamilyType>().ToList();
-
-
-        #endregion
-
-        #region Create level
-        public static Level CreateLevel(Document doc, string levelName, double levelElevationInMM, bool isLevelPinned)
+        public static Level CreateLevel(string levelName, double levelElevationInMM, bool isLevelPinned)
         {
-            using (Transaction trans = new Transaction(doc, "Create level"))
+            using (Transaction trans = new Transaction(Doc, "Create level"))
             {
                 try
                 {
                     trans.Start();
-                    Level newLevel = Level.Create(doc, RHelper.ToIU(levelElevationInMM));
+                    Level newLevel = Level.Create(Doc, RHelper.ToIU(levelElevationInMM));
                     newLevel.Name = levelName;
                     newLevel.Pinned = isLevelPinned;
                     trans.Commit();
@@ -110,32 +101,53 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
                 }
             }
         }
-        #endregion
 
-        #region Create workset
-        public static Workset CreateWorkset(Document doc, string worksetName)
+        public static Level CreateLevel(Level levelToOffsetFrom, double offsetFromValueLevelInMM, string levelName, bool isLevelPinned)
+        {
+            try
+            {
+                double inputLevelElevationInMM = ToMM(levelToOffsetFrom.Elevation);
+                using (Transaction trans = new Transaction(Doc, "Create level"))
+                {
+                    trans.Start();
+                    Level newLevel = Level.Create(Doc, RHelper.ToIU(inputLevelElevationInMM + offsetFromValueLevelInMM));
+                    newLevel.Name = levelName;
+                    newLevel.Pinned = isLevelPinned;
+                    trans.Commit();
+                    return newLevel;
+                }
+
+            }
+            catch (Exception e)
+            {
+                RHelper.TDError(e);
+                return null;
+            }
+        }
+
+        public static Workset CreateWorkset(string worksetName)
         {
             Workset newWorkset = null;
 
             // If the document isn't workshared 
-            if (!doc.IsWorkshared)
+            if (!Doc.IsWorkshared)
             {
                 TDError("Can't create a workset in a non-workshared document");
                 return null; 
             }
 
             // Check that the workset name is unique
-            if (!WorksetTable.IsWorksetNameUnique(doc, worksetName))
+            if (!WorksetTable.IsWorksetNameUnique(Doc, worksetName))
             {
                 TDError("The workset name already exists");
                 return null;
             }
 
             // If none of the breaking conditions happened create the workset
-            using (Transaction worksetTransaction = new Transaction(doc, "Set preview view id"))
+            using (Transaction worksetTransaction = new Transaction(RHelper.Doc,"Set preview view id"))
             {
                 worksetTransaction.Start();
-                newWorkset = Workset.Create(doc, worksetName);
+                newWorkset = Workset.Create(RHelper.Doc, worksetName);
                 worksetTransaction.Commit();
             }
 
@@ -143,7 +155,7 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
         }
         #endregion
 
-        #region CreateButton
+        #region External application helpers
         public static void CreateButton(string buttonName, RibbonPanel ribbonPanel, string fullClassName, string toolTip, string iconPath)
         {
             string assemblyPath = Assembly.GetExecutingAssembly().Location;
@@ -161,7 +173,6 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
             pushButton.LargeImage = bitmapImage;
         }
         #endregion
-
 
     }
 }

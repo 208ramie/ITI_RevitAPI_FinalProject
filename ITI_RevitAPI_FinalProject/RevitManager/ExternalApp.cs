@@ -31,24 +31,28 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
 
             // Create a button
             RHelper.CreateButton("Settings", ribbonPanel,
-                "ITI_RevitAPI_FinalProject.RevitManager.LevelCreation",
+                "ITI_RevitAPI_FinalProject.RevitManager.SettingsManager",
                 "Sets up the project and modify its settings",
                 "Resources/Settings.ico");
 
-            RHelper.CreateButton("Create\nLevel", ribbonPanel, "ITI_RevitAPI_FinalProject.RevitManager.LevelCreation",
+            RHelper.CreateButton("Create\nLevel", ribbonPanel, 
+                "ITI_RevitAPI_FinalProject.RevitManager.LevelCreation",
                 "Creates a level according to the naming convention",
                 "Resources/Level.ico");
 
-            RHelper.CreateButton("Create\nView", ribbonPanel, "ITI_RevitAPI_FinalProject.RevitManager.LevelCreation",
+            RHelper.CreateButton("Create\nView", ribbonPanel,
+                "ITI_RevitAPI_FinalProject.RevitManager.ViewCreation",
                 "Creates a view according to naming convention",
                 "Resources/View.ico");
 
-            RHelper.CreateButton("Create\nWorkset", ribbonPanel, "ITI_RevitAPI_FinalProject.RevitManager.LevelCreation",
+            RHelper.CreateButton("Create\nWorkset", ribbonPanel, 
+                "ITI_RevitAPI_FinalProject.RevitManager.WorkSetCreation",
                 "Creates a level according to the naming convention",
                 "Resources/Worksets.ico");
 
-            RHelper.CreateButton("Import\nExcel", ribbonPanel, "ITI_RevitAPI_FinalProject.RevitManager.LevelCreation",
-                "Creates a level according to the naming convention",
+            RHelper.CreateButton("Import\nExcel", ribbonPanel, 
+                "ITI_RevitAPI_FinalProject.RevitManager.ExcelImporter",
+                "Imports stuff from excel file",
                 "Resources/Excel.ico");
 
 
@@ -80,19 +84,19 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
         }
 
 
-        private void OnDocOpened(object sender, DocumentOpenedEventArgs args)
-        {
+        //private void OnDocOpened(object sender, DocumentOpenedEventArgs args)
+        //{
              
-            //Autodesk.Revit.ApplicationServices.Application app = (Autodesk.Revit.ApplicationServices.Application)sender;
-            //Document doc = args.Document;
-        }
+        //    //Autodesk.Revit.ApplicationServices.Application app = (Autodesk.Revit.ApplicationServices.Application)sender;
+        //    //Document doc = args.Document;
+        //}
 
 
-        void OnViewActivated(object sender, ViewActivatedEventArgs e)
-        {
-            View vCurrent = e.CurrentActiveView;
-            Document doc = e.Document;
-        }
+        //void OnViewActivated(object sender, ViewActivatedEventArgs e)
+        //{
+        //    View vCurrent = e.CurrentActiveView;
+        //    Document doc = e.Document;
+        //}
 
 
     }

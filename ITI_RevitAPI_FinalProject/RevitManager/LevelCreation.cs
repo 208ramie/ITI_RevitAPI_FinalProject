@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using ITI_RevitAPI_FinalProject.View;
 
 namespace ITI_RevitAPI_FinalProject.RevitManager
 {
@@ -14,12 +15,10 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            UIDocument uidoc = commandData.Application.ActiveUIDocument;
-            Document doc = uidoc.Document;
-
-            RHelper.CreateLevel(doc, "LevelRamie", RHelper.ToIU(5000), false);
-            return Result.Succeeded; 
+            RHelper.UIDoc = commandData.Application.ActiveUIDocument;
+            new LevelCreatorView().ShowDialog(); 
+            //RHelper.CreateLevel("LevelRamie", RHelper.ToIU(5000), false);
+            return Result.Succeeded;
         }
-
     }
 }

@@ -13,12 +13,11 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
     [Transaction(TransactionMode.Manual)]
     public class WorkSetCreation : IExternalCommand
     {
-
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            UIDocument uidoc = commandData.Application.ActiveUIDocument; 
-            Document doc = uidoc.Document;
-            RHelper.CreateWorkset(doc, "RamieWorkset"); 
+            RHelper.UIDoc = commandData.Application.ActiveUIDocument;
+
+            RHelper.CreateWorkset("RamieWorkset");
             return Result.Succeeded;
         }
     }
