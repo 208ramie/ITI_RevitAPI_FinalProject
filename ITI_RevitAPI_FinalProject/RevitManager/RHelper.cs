@@ -48,7 +48,8 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
         //public List<Level> GetAllLevelsInDocument(Document doc)
         //    =>  new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Levels).WhereElementIsNotElementType().Cast<Level>().ToList();
         public static List<Level> GetAllLevelsInDocument()
-            => new FilteredElementCollector(Doc).OfClass(typeof(Level)).Cast<Level>().ToList(); 
+            => new FilteredElementCollector(Doc).OfClass(typeof(Level)).Cast<Level>()
+                .OrderByDescending(l => l.Elevation).ToList();  
         #endregion
 
         #region Core methods
@@ -110,7 +111,7 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
                 using (Transaction trans = new Transaction(Doc, "Create level"))
                 {
                     trans.Start();
-                    Level newLevel = Level.Create(Doc, RHelper.ToIU(inputLevelElevationInMM + offsetFromValueLevelInMM));
+                    Level newLevel = Level.Create(Doc, ToIU(inputLevelElevationInMM + offsetFromValueLevelInMM));
                     newLevel.Name = levelName;
                     newLevel.Pinned = isLevelPinned;
                     trans.Commit();

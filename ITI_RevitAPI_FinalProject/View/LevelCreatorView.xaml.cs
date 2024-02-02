@@ -24,22 +24,34 @@ namespace ITI_RevitAPI_FinalProject.View
         {
             InitializeComponent();
             this.DataContext = LevelCreatorVM.Instance;
-            LevelCreatorVM.Window = this; 
+            LevelCreatorVM.Window = this;
+            LevelPickerComboBox.SelectedIndex = 0; 
         }
 
-        private void Close_OnClick(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        private void Close_OnClick(object sender, RoutedEventArgs e) 
+            => Close();
 
-        private void Minimize_OnClick(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
+        private void Minimize_OnClick(object sender, RoutedEventArgs e) 
+            => WindowState = WindowState.Minimized;
 
-        private void LevelCreatorView_OnMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
+        private void LevelCreatorView_OnMouseDown(object sender, MouseButtonEventArgs e) 
+            => DragMove();
+
+        private void AbsoluteElevationCheckBox_OnChecked(object sender, RoutedEventArgs e)
+            => LevelPickerComboBox.IsEnabled = false;
+
+        private void AbsoluteElevationCheckBox_OnUnchecked(object sender, RoutedEventArgs e)
+            => LevelPickerComboBox.IsEnabled = true;
+
+        private void TextBox_OnGotFocus(object sender, RoutedEventArgs e) 
+            => (sender as TextBox)?.SelectAll();
+
+
+        private void IsPinnedTextBlock_OnMouseDown(object sender, MouseButtonEventArgs e)
+            => IsPinnedCheckBox.IsChecked = !IsPinnedCheckBox.IsChecked;
+
+
+        private void AbsoluteElevationTextBlock_OnMouseDown(object sender, MouseButtonEventArgs e)
+            => AbsoluteElevationCheckBox.IsChecked = !AbsoluteElevationCheckBox.IsChecked; 
     }
 }

@@ -7,7 +7,7 @@
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
         Title="LevelCreatorView" 
-        Height="auto"
+        Height="440"
         Width="800"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
@@ -49,8 +49,138 @@
                 </StackPanel>
 
 
-                <TextBlock Margin="0 30 0 20" Style="{StaticResource Text_PrimaryHeader}">
-                    Levels Naming Template
+
+
+                <TextBlock Margin="0 30 0 15" 
+                           Style="{StaticResource Text_PrimaryHeader}"
+                           FontSize="20">
+                     Level Properties
+                </TextBlock>
+
+
+                <Grid Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Name="LevelPickerTextBlock"
+                               Margin="0"
+                               Grid.Row="0" Grid.Column="0"
+                               TextAlignment="Center"
+                               Style="{StaticResource Text_PrimaryHeader}">
+                        Level to offset from
+                    </TextBlock>
+
+                    <TextBlock Name="ElevationTextBlock"
+                               Margin="0"
+                               Grid.Row="0"
+                               Grid.Column="1"
+                               TextAlignment="Center"
+                               Style="{StaticResource Text_PrimaryHeader}">
+                        Elevation
+                    </TextBlock>
+
+
+                    <ComboBox Name="LevelPickerComboBox"
+                              Grid.Column="0"
+                              Grid.Row="1"
+                              Style="{StaticResource ComboBoxDefault}"
+                              ItemsSource="{Binding DocumentLevels}"
+                              DisplayMemberPath="Name"
+                              SelectedItem="{Binding SelectedLevel, UpdateSourceTrigger=PropertyChanged}"
+                              />
+
+                    <TextBox Name="ElevationTextBox"
+                             Grid.Column="1"
+                             Grid.Row="1"
+                             Style="{StaticResource TextBox_Default_Centered}"
+                             Text="{Binding LevelElevation, UpdateSourceTrigger=PropertyChanged}" 
+                             GotFocus="TextBox_OnGotFocus"
+                             />
+
+                    <StackPanel Name="AbsoluteElevation"
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Orientation="Horizontal"
+                                Margin="5"
+                                >
+                        <CheckBox Name="AbsoluteElevationCheckBox"
+                                  Margin="0 1 10 0"
+                                  IsChecked="{Binding IsElevationAbsolute, UpdateSourceTrigger=PropertyChanged}"
+                                  Checked="AbsoluteElevationCheckBox_OnChecked"
+                                  Unchecked="AbsoluteElevationCheckBox_OnUnchecked"
+                                  />
+
+                        <TextBlock Name="AbsoluteElevationTextBlock"
+                                   Margin="0"
+                                   Grid.Row="0"
+                                   Grid.Column="1"
+                                   TextAlignment="Center"
+                                   Style="{StaticResource Text_PrimaryHeader}"
+                                   MouseDown="AbsoluteElevationTextBlock_OnMouseDown">
+                            Absolute elevation
+                        </TextBlock>
+
+
+
+                        <CheckBox Name="IsPinnedCheckBox"
+                                  Margin="50 1 10 0"
+                                  IsChecked="{Binding IsLevelPinned, UpdateSourceTrigger=PropertyChanged}"
+                        />
+
+                        <TextBlock Name="IsPinnedTextBlock"
+                                   Margin="0"
+                                   Grid.Row="0"
+                                   Grid.Column="1"
+                                   TextAlignment="Center"
+                                   Style="{StaticResource Text_PrimaryHeader}"
+                                   MouseDown="IsPinnedTextBlock_OnMouseDown">
+                            Pin Level
+                        </TextBlock>
+                    </StackPanel>
+
+
+                    <StackPanel Grid.Row="2"
+                                Grid.Column="1"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="5">
+
+                        <TextBlock Name="TotalElevationTitle"
+                                   Margin="0"
+                                   TextAlignment="Center"
+                                   Style="{StaticResource Text_PrimaryHeader}"
+                                   Text="Total Elevation = "/>
+
+                        <TextBlock Name="TotalElevationTextBlock"
+                                   Margin="0"
+                                   TextAlignment="Center"
+                                   Style="{StaticResource Text_PrimaryHeader}"
+                                   Text="{Binding TotalElevation, UpdateSourceTrigger=PropertyChanged}"
+                                   Foreground="{StaticResource Brush_Accent1}"
+                                   />
+                    </StackPanel>
+
+                </Grid>
+
+
+
+
+
+
+
+
+
+                <TextBlock Margin="0 30 0 15" 
+                           Style="{StaticResource Text_PrimaryHeader}"
+                           FontSize="20">
+                    Level Name
                 </TextBlock>
 
 
@@ -77,21 +207,24 @@
                     <TextBox Tag="{Binding ElementName=TextBoxOne, Path=Text, Mode=OneWay}"
                              Grid.Column="0" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
                              Text="{Binding LevelPrefix, UpdateSourceTrigger=PropertyChanged}"
+                             GotFocus="TextBox_OnGotFocus"
                              />
                     <TextBox Tag="{Binding ElementName=TextBoxTwo, Path=Text, Mode=OneWay}" 
                              Grid.Column="1" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
                              Text="{Binding LevelSerial, UpdateSourceTrigger=PropertyChanged}"
+                             GotFocus="TextBox_OnGotFocus"
                              />
                     <TextBox Tag="{Binding ElementName=TextBoxThree, Path=Text, Mode=OneWay}" 
                              Grid.Column="2" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
                              Text="{Binding LevelName, UpdateSourceTrigger=PropertyChanged}"
+                             GotFocus="TextBox_OnGotFocus"
                              />
                     <TextBox Tag="{Binding ElementName=TextBoxFour, Path=Text, Mode=OneWay}" 
                              Grid.Column="3" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
                              Text="{Binding LevelDiscipline, UpdateSourceTrigger=PropertyChanged}"
+                             GotFocus="TextBox_OnGotFocus"
                              />
                 </Grid>
-
 
 
 
@@ -108,17 +241,30 @@
             </StackPanel>
 
         </Border>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20 29 0 0" >
-            <fa:IconImage Margin="0 -5 20 0" Icon="ChartBar" Width="30" Foreground="{StaticResource Brush_Accent2}"/>
-            <TextBlock Width="auto" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" Style="{StaticResource Text_PrimaryHeader}" FontSize="20">
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Top"
+                    Margin="20 29 0 0">
+
+            <fa:IconImage Margin="0 -5 20 0"
+                          Icon="CaretDown"
+                          Width="30"
+                          Foreground="{StaticResource Brush_Accent2}" />
+            <TextBlock Width="auto"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Margin="0"
+                       Style="{StaticResource Text_PrimaryHeader}"
+                       FontSize="20">
                 Create a level
             </TextBlock>
-        </StackPanel >
-        <Line
-            X1="0" Y1="70"
-            X2="1300" Y2="70"
-            Stroke="{StaticResource Brush_Accent1}"
-            StrokeThickness="2"/>
+        </StackPanel>
+
+        <Line X1="0"
+              Y1="70"
+              X2="1300"
+              Y2="70"
+              Stroke="{StaticResource Brush_Accent1}"
+              StrokeThickness="2" />
 
     </Grid>
 </Window>
