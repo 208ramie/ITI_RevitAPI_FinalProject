@@ -27,34 +27,47 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
             application.CreateRibbonTab(tabName);
 
             // Create a panel in the tab
-            RibbonPanel ribbonPanel = application.CreateRibbonPanel(tabName, "Create");
+            RibbonPanel settingsRibbonPanel = application.CreateRibbonPanel(tabName, "Settings");
+            RibbonPanel createRibbonPanel = application.CreateRibbonPanel(tabName, "Create");
+            RibbonPanel modifyRibbonPanel = application.CreateRibbonPanel(tabName, "Modify");
+            RibbonPanel excelRibbonPanel = application.CreateRibbonPanel(tabName, "Excel");
 
             // Create a button
-            RHelper.CreateButton("Settings", ribbonPanel,
+            RHelper.CreateButton("Settings", settingsRibbonPanel,
                 "ITI_RevitAPI_FinalProject.RevitManager.SettingsManager",
                 "Sets up the project and modify its settings",
                 "Resources/Settings.ico");
 
-            RHelper.CreateButton("Create\nLevel", ribbonPanel, 
+            RHelper.CreateButton("Create\nLevel", createRibbonPanel, 
                 "ITI_RevitAPI_FinalProject.RevitManager.LevelCreation",
                 "Creates a level according to the naming convention",
                 "Resources/Level.ico");
 
-            RHelper.CreateButton("Create\nView", ribbonPanel,
+            RHelper.CreateButton("Create\nView", createRibbonPanel,
                 "ITI_RevitAPI_FinalProject.RevitManager.ViewCreation",
                 "Creates a view according to naming convention",
                 "Resources/View.ico");
 
-            RHelper.CreateButton("Create\nWorkset", ribbonPanel, 
+            RHelper.CreateButton("Create\nWorkset", createRibbonPanel, 
                 "ITI_RevitAPI_FinalProject.RevitManager.WorkSetCreation",
-                "Creates a level according to the naming convention",
+                "Creates a workset according to naming convention",
                 "Resources/Worksets.ico");
 
-            RHelper.CreateButton("Import\nExcel", ribbonPanel, 
+            RHelper.CreateButton("Adjust\nGrids", modifyRibbonPanel,
+                "ITI_RevitAPI_FinalProject.RevitManager.GridsRenamer",
+                "Renames the grid",
+                "Resources/GridRenamer.ico");
+
+
+            RHelper.CreateButton("Import\nExcel", excelRibbonPanel, 
                 "ITI_RevitAPI_FinalProject.RevitManager.ExcelImporter",
                 "Imports stuff from excel file",
                 "Resources/Excel.ico");
 
+            RHelper.CreateButton("Export\nExcel", excelRibbonPanel,
+                "ITI_RevitAPI_FinalProject.RevitManager.ExcelImporter",
+                "Exports stuff from excel",
+                "Resources/ExcelExport.ico");
 
 
             //// Create a button

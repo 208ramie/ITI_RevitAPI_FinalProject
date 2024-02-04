@@ -128,9 +128,25 @@
                         </TextBlock>
 
 
+                        <CheckBox Name="IsViewPlanCheckBox"
+                                  Margin="30 1 10 0"
+                                  IsChecked="{Binding IsViewPlan, UpdateSourceTrigger=PropertyChanged}"
+                        />
+
+                        <TextBlock Name="IsViewPlanTextBlock"
+                                   Margin="0"
+                                   Grid.Row="0"
+                                   Grid.Column="1"
+                                   TextAlignment="Center"
+                                   Style="{StaticResource Text_PrimaryHeader}"
+                                   MouseDown="IsViewPlanTextBlock_OnMouseDown">
+                            Create view
+                        </TextBlock>
+
+
 
                         <CheckBox Name="IsPinnedCheckBox"
-                                  Margin="50 1 10 0"
+                                  Margin="30 1 10 0"
                                   IsChecked="{Binding IsLevelPinned, UpdateSourceTrigger=PropertyChanged}"
                         />
 

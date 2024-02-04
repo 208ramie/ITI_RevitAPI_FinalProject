@@ -26,9 +26,20 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
         private bool _isElevationAbsolute;
         private bool _isLevelPinned;
         private double _totalElevation;
+        private bool _isViewPlan = false;
         #endregion"
 
         #region properties
+        public bool IsViewPlan
+        {
+            get { return _isViewPlan; }
+            set
+            {
+                _isViewPlan = value;
+                OnPropertyChanged();
+            }
+        }
+
         public bool IsLevelPinned
         {
             get => _isLevelPinned;
@@ -131,15 +142,11 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
         private void CreateLevelM(object obj)
         {
             if (IsElevationAbsolute)
-            {
-                RHelper.CreateLevel(CombinedLevelName, LevelElevation, IsLevelPinned);
-            }
+                RHelper.CreateLevel(CombinedLevelName, LevelElevation, IsLevelPinned, IsViewPlan);
             else
-            {
-                RHelper.CreateLevel(SelectedLevel, LevelElevation, CombinedLevelName, IsLevelPinned);
-            }
+                RHelper.CreateLevel(SelectedLevel, LevelElevation, CombinedLevelName, IsLevelPinned, IsViewPlan);
+
             Window.Close();
-            
         }
         #endregion
 

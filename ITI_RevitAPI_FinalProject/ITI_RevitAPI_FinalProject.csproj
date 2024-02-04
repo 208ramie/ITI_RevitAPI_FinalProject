@@ -77,6 +77,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="RevitManager\ExcelImporter.cs" />
+    <Compile Include="RevitManager\GridsRenamer.cs" />
     <Compile Include="RevitManager\LevelCreation.cs" />
     <Compile Include="RevitManager\ExternalApp.cs" />
     <Compile Include="RevitManager\RHelper.cs" />
@@ -199,6 +200,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ExcelExport.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\GridRenamer.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

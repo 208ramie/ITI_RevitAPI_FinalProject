@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ITI_RevitAPI_FinalProject.ViewModel;
+using TextBox = System.Windows.Controls.TextBox;
 
 namespace ITI_RevitAPI_FinalProject.View
 {
@@ -43,8 +44,11 @@ namespace ITI_RevitAPI_FinalProject.View
         private void AbsoluteElevationCheckBox_OnUnchecked(object sender, RoutedEventArgs e)
             => LevelPickerComboBox.IsEnabled = true;
 
-        private void TextBox_OnGotFocus(object sender, RoutedEventArgs e) 
-            => (sender as TextBox)?.SelectAll();
+        private void TextBox_OnGotFocus(object sender, RoutedEventArgs e)
+        {
+            var txtbx = sender as TextBox;  
+            txtbx?.SelectAll();
+        } 
 
 
         private void IsPinnedTextBlock_OnMouseDown(object sender, MouseButtonEventArgs e)
@@ -52,6 +56,10 @@ namespace ITI_RevitAPI_FinalProject.View
 
 
         private void AbsoluteElevationTextBlock_OnMouseDown(object sender, MouseButtonEventArgs e)
-            => AbsoluteElevationCheckBox.IsChecked = !AbsoluteElevationCheckBox.IsChecked; 
+            => AbsoluteElevationCheckBox.IsChecked = !AbsoluteElevationCheckBox.IsChecked;
+
+        private void IsViewPlanTextBlock_OnMouseDown(object sender, MouseButtonEventArgs e)
+            => IsViewPlanCheckBox.IsChecked = !IsViewPlanCheckBox.IsChecked;
+
     }
 }
