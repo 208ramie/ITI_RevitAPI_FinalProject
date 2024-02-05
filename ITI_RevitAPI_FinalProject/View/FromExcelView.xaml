@@ -31,12 +31,16 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="561*"/>
+            <ColumnDefinition Width="169*"/>
+        </Grid.ColumnDefinitions>
         <Border 
             Background="{StaticResource Brush_Background_Primary}"
             BorderBrush="{StaticResource Brush_Border}" 
             BorderThickness="2" 
             CornerRadius="15"
-            Padding="20">
+            Padding="20" Grid.ColumnSpan="2">
             <StackPanel>
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                     <Button Style="{StaticResource Button_Info}" 
@@ -62,20 +66,20 @@
                         Grid.Column="2"
                         Style="{StaticResource Button_Default_Alt}"
                         Content="Browse"
-                        Command="{Binding BTN_Browse}"/>
-                    
+                        Command="{Binding BrowseCommand}"/>
+
                 </Grid>
                 <StackPanel 
                     HorizontalAlignment="Center">
                     <Button 
                         Style="{StaticResource Button_Accent}" 
-                        Content="Apply"
-                        Command="{Binding BTN_Browse}"/>
+                        Content="Create"
+                        Command="{Binding CreateCommand}"/>
                 </StackPanel>
             </StackPanel>
 
         </Border>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20 29 0 0" >
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20 29 0 0" Grid.ColumnSpan="2" >
             <fa:IconImage Margin="0 -5 20 0" Icon="ChartBar" Width="30" Foreground="{StaticResource Brush_Accent2}"/>
             <TextBlock Width="auto" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" Style="{StaticResource Text_PrimaryHeader}" FontSize="20">
                 Open From Excel
@@ -85,7 +89,7 @@
             X1="0" Y1="70"
             X2="1300" Y2="70"
             Stroke="{StaticResource Brush_Accent1}"
-            StrokeThickness="2"/>
+            StrokeThickness="2" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

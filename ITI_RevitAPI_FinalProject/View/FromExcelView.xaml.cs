@@ -12,6 +12,7 @@ namespace ITI_RevitAPI_FinalProject.View
         public FromExcelView()
         {
             DataContext = FromExcelVM.Instance;
+            FromExcelVM.Window = this;
             InitializeComponent();
         }
 
