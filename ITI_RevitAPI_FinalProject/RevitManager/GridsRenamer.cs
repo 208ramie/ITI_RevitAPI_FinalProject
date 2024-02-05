@@ -18,6 +18,7 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
             try
             {
                 RHelper.RenameGrids();
+                message = "Renamed!"; 
                 return Result.Succeeded; 
             }
             catch (Exception e)

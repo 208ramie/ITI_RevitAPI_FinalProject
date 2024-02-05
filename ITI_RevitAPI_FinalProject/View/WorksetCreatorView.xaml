@@ -15,17 +15,15 @@
         ResizeMode="NoResize"
         MouseDown="WorksetCreatorView_OnMouseDown">
 
-        <!--xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"-->
 
 
-    <Window.Resources>
+    <!--<Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Styles/Light_Theme.xaml" />
                 <ResourceDictionary Source="../Styles/ScrollViewer.xaml" />
                 <ResourceDictionary Source="../Styles/Page.xaml" />
                 <ResourceDictionary Source="../Styles/Image.xaml" />
-                <ResourceDictionary Source="../Styles/Icons.xaml" />
                 <ResourceDictionary Source="../Styles/Text.xaml" />
                 <ResourceDictionary Source="../Styles/TextBox.xaml" />
                 <ResourceDictionary Source="../Styles/ComboBox.xaml" />
@@ -33,7 +31,11 @@
                 <ResourceDictionary Source="../Styles/DataGrid.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </Window.Resources>
+    </Window.Resources>-->
+
+        <Window.Resources>
+            <ResourceDictionary Source="pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Resources.xaml" />
+        </Window.Resources>
 
     <Window.DataContext>
         <vm:WorksetCreatorVM x:Name="Instance" />

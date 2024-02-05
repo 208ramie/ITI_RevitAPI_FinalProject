@@ -14,23 +14,9 @@
         Background="Transparent"
         ResizeMode="NoResize"
         MouseDown="LevelCreatorView_OnMouseDown">
-        <!--xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"-->
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Styles/Light_Theme.xaml" />
-                <ResourceDictionary Source="../Styles/ScrollViewer.xaml" />
-                <ResourceDictionary Source="../Styles/Page.xaml" />
-                <ResourceDictionary Source="../Styles/Image.xaml" />
-                <ResourceDictionary Source="../Styles/Icons.xaml" />
-                <ResourceDictionary Source="../Styles/Text.xaml" />
-                <ResourceDictionary Source="../Styles/TextBox.xaml" />
-                <ResourceDictionary Source="../Styles/ComboBox.xaml" />
-                <ResourceDictionary Source="../Styles/Button.xaml" />
-                <ResourceDictionary Source="../Styles/DataGrid.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
+        <Window.Resources>
+            <ResourceDictionary Source="pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Resources.xaml" />
+        </Window.Resources>
 
 
     <Grid>
@@ -225,12 +211,12 @@
                              Text="{Binding LevelPrefix, UpdateSourceTrigger=PropertyChanged}"
                              GotFocus="TextBox_OnGotFocus"
                              />
-                    <TextBox Tag="{Binding ElementName=TextBoxTwo, Path=Text, Mode=OneWay}" 
+                    <TextBox Tag="00" 
                              Grid.Column="1" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
                              Text="{Binding LevelSerial, UpdateSourceTrigger=PropertyChanged}"
                              GotFocus="TextBox_OnGotFocus"
                              />
-                    <TextBox Tag="{Binding ElementName=TextBoxThree, Path=Text, Mode=OneWay}" 
+                    <TextBox Tag="Name" 
                              Grid.Column="2" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
                              Text="{Binding LevelName, UpdateSourceTrigger=PropertyChanged}"
                              GotFocus="TextBox_OnGotFocus"
