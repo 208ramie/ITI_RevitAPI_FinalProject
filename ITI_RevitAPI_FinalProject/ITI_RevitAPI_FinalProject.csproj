@@ -94,9 +94,6 @@
     <Compile Include="RevitManager\SettingsManager.cs" />
     <Compile Include="RevitManager\ViewCreation.cs" />
     <Compile Include="RevitManager\WorkSetCreation.cs" />
-    <Compile Include="Revit\ExcelOpen.cs" />
-    <Compile Include="Revit\OpenSettings.cs" />
-    <Compile Include="Revit\OpenWindow.cs" />
     <Compile Include="Utilities\RelayCommand.cs" />
     <Compile Include="Utilities\ViewModelBase.cs" />
     <Compile Include="ViewModel\FromExcelVM.cs" />
