@@ -1,4 +1,5 @@
 ﻿using System;
+using ITI_RevitAPI_FinalProject.RevitManager;
 using ITI_RevitAPI_FinalProject.Utilities;
 
 namespace ITI_RevitAPI_FinalProject.ViewModel
@@ -16,22 +17,34 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
             }
         }
 
-        public RelayCommand BTN_Browse { get; set; }
-        public FromExcelVM() => BTN_Browse = new RelayCommand(BrowseFile);
+        public RelayCommand BrowseCommand { get; set; }
+        public RelayCommand CreateCommand { get; set; }
 
-        public void BrowseFile(object obj)
+        // Constructor
+        public FromExcelVM()
+        {
+            BrowseCommand = new RelayCommand(BrowseM);
+            CreateCommand = new RelayCommand(CreateM);
+        }
+
+        private void CreateM(object obj)
+        {
+            ExcelHelper.ImportFromExcel(BrowseTextBox);
+            Window.Close();
+        }
+
+        public void BrowseM(object obj)
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog
             {
                 DefaultExt = ".xlsx",
                 Filter = "Excel Files (*.xlsx, *.xls)|*.xlsx;*.xls|All Files (*.*)|*.*"
             };
-            Nullable<bool> result = dlg.ShowDialog();
+
+            bool? result = dlg.ShowDialog();
+
             if (result == true)
-            {
-                string filename = dlg.FileName;
-                BrowseTextBox = filename;
-            }
+                BrowseTextBox = dlg.FileName;
         }
     }
 }

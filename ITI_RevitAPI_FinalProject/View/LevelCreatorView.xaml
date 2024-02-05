@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ITI_RevitAPI_FinalProject.View"
-        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
         Title="LevelCreatorView" 
         Height="440"
@@ -15,7 +14,7 @@
         Background="Transparent"
         ResizeMode="NoResize"
         MouseDown="LevelCreatorView_OnMouseDown">
-
+        <!--xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"-->
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -262,10 +261,10 @@
                     VerticalAlignment="Top"
                     Margin="20 29 0 0">
 
-            <fa:IconImage Margin="0 -5 20 0"
+            <!--<fa:IconImage Margin="0 -5 20 0"
                           Icon="CaretDown"
                           Width="30"
-                          Foreground="{StaticResource Brush_Accent2}" />
+                          Foreground="{StaticResource Brush_Accent2}" />-->
             <TextBlock Width="auto"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"

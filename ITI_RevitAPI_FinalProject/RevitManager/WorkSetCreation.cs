@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using ITI_RevitAPI_FinalProject.View;
 
 namespace ITI_RevitAPI_FinalProject.RevitManager
 {
@@ -17,7 +18,8 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
         {
             RHelper.UIDoc = commandData.Application.ActiveUIDocument;
 
-            RHelper.CreateWorkset("RamieWorkset");
+            new WorksetCreatorView().ShowDialog();
+
             return Result.Succeeded;
         }
     }

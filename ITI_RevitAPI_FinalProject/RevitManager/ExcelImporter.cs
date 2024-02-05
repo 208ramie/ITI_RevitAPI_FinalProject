@@ -15,6 +15,7 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
+            RHelper.UIDoc = commandData.Application.ActiveUIDocument;
             try
             {
                 FromExcelView excelWindow = new FromExcelView();
