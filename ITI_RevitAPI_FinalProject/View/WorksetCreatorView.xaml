@@ -15,8 +15,6 @@
         ResizeMode="NoResize"
         MouseDown="WorksetCreatorView_OnMouseDown">
 
-
-
     <!--<Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
