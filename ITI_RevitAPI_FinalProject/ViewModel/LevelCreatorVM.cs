@@ -16,10 +16,10 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
     {
 
         #region Fields
-        private string _levelPrefix = "LV";
-        private string _levelSerial = "00";
-        private string _levelName = "FRST";
-        private string _levelDiscipline = "ARC";
+        private string _levelPrefix;
+        private string _levelSerial;
+        private string _levelName;
+        private string _levelDiscipline;
         private ObservableCollection<Level> _documentLevels;
         private Level _selectedLevel;
         private double _levelElevation = 500;
@@ -134,8 +134,6 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
             UpdateTotalElevation();
             SelectedLevel = RHelper.GetAllLevelsInDocument().FirstOrDefault(); 
         }
-
-
         #endregion
 
         #region CommandMethods

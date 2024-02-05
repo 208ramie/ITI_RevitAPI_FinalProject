@@ -100,6 +100,7 @@
     <Compile Include="ViewModel\FromExcelVM.cs" />
     <Compile Include="ViewModel\LevelCreatorVM.cs" />
     <Compile Include="ViewModel\SettingsVM.cs" />
+    <Compile Include="ViewModel\ViewPlanCreatorVM.cs" />
     <Compile Include="ViewModel\WorksetCreatorVM.cs" />
     <Compile Include="View\FromExcelView.xaml.cs">
       <DependentUpon>FromExcelView.xaml</DependentUpon>

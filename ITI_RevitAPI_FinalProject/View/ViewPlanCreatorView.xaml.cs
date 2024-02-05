@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ITI_RevitAPI_FinalProject.ViewModel;
 
 namespace ITI_RevitAPI_FinalProject.View
 {
@@ -22,6 +23,22 @@ namespace ITI_RevitAPI_FinalProject.View
         public ViewPlanCreatorView()
         {
             InitializeComponent();
+            ViewPlanCreatorVM.Window = this; 
+        }
+
+        private void WorksetCreatorView_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void Minimize_OnClick(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized; 
+        }
+
+        private void Close_OnClick(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using ITI_RevitAPI_FinalProject.View;
 
 namespace ITI_RevitAPI_FinalProject.RevitManager
 {
@@ -16,7 +17,7 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
         {
             RHelper.UIDoc = commandData.Application.ActiveUIDocument;
 
-            RHelper.CreateViewPlan(null);
+            new ViewPlanCreatorView().ShowDialog(); 
 
             return Result.Succeeded;
         }

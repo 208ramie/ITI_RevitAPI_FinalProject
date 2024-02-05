@@ -153,11 +153,11 @@
 
         </Border>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20 29 0 0" >
-            <fa:IconImage 
+            <!--<fa:IconImage 
                 Margin="0 -5 20 0" 
                 Icon="Wrench" 
                 Width="30" 
-                Foreground="{StaticResource Brush_Accent1}"/>
+                Foreground="{StaticResource Brush_Accent1}"/>-->
             <TextBlock Width="auto" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" Style="{StaticResource Text_PrimaryHeader}" FontSize="20">
                 R.A.G Settings
             </TextBlock>

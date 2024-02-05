@@ -125,10 +125,11 @@
                     VerticalAlignment="Top"
                     Margin="20 29 0 0">
 
-            <fa:IconImage Margin="0 -5 20 0"
+            <!--<fa:IconImage Margin="0 -5 20 0"
                           Icon="Cubes"
                           Width="30"
-                          Foreground="{StaticResource Brush_Accent2}" />
+                          Foreground="{StaticResource Brush_Accent2}" />-->
+
             <TextBlock Width="auto"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
