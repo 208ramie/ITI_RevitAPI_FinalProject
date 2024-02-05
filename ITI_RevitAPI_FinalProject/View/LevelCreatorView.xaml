@@ -15,6 +15,7 @@
         Background="Transparent"
         ResizeMode="NoResize"
         MouseDown="LevelCreatorView_OnMouseDown">
+
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
