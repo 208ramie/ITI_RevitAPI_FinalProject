@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:ITI_RevitAPI_FinalProject.ViewModel"
-        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         Title="ViewPlanCreatorView"
         Height="auto"
         Width="800"
@@ -16,6 +15,7 @@
         ResizeMode="NoResize"
         MouseDown="WorksetCreatorView_OnMouseDown">
 
+        <!--xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"-->
 
     <Window.Resources>
         <ResourceDictionary>
