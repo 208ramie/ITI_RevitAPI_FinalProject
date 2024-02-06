@@ -61,16 +61,71 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
         }
         #endregion
 
+        #region Enable Disable Textbox Props
+        private bool _isEnabledPrefix = true;
+        private bool _isEnabledSerial = true;
+        private bool _isEnabledName = true;
+        private bool _isEnabledDiscipline = true;
+        public bool IsEnabledPrefix
+        {
+            get { return _isEnabledPrefix; }
+            set { _isEnabledPrefix = value; OnPropertyChanged(); }
+        }
+        public bool IsEnabledSerial
+        {
+            get { return _isEnabledSerial; }
+            set { _isEnabledSerial = value; OnPropertyChanged(); }
+        }
+        public bool IsEnabledName
+        {
+            get { return _isEnabledName; }
+            set { _isEnabledName = value; OnPropertyChanged(); }
+        }
+        public bool IsEnabledDiscipline
+        {
+            get { return _isEnabledDiscipline; }
+            set { _isEnabledDiscipline = value; OnPropertyChanged(); }
+        }
+        #endregion
+
         #region Commands
         public RelayCommand CreateViewPlanCommand { get; set; }
         #endregion
 
-        #region Constructor
+        #region ctor
         public ViewPlanCreatorVM()
         {
             CreateViewPlanCommand = new RelayCommand(CreateViewPlanM);
             SelectedLevel = RHelper.GetAllLevelsInDocument().FirstOrDefault();
         }
+        #endregion
+
+        #region OnInstanceCalled
+
+        protected override void onInstanceCalled()
+        {
+            if (!string.IsNullOrEmpty(SettingsVM.Instance.PlanPrefix))
+            {
+                ViewPrefix = SettingsVM.Instance.PlanPrefix;
+                IsEnabledPrefix = false;
+            }
+            if (!string.IsNullOrEmpty(SettingsVM.Instance.PlanName))
+            {
+                ViewName = SettingsVM.Instance.PlanName;
+                IsEnabledName = false;
+            }
+            if (!string.IsNullOrEmpty(SettingsVM.Instance.PlanDiscipline))
+            {
+                ViewDiscipline = SettingsVM.Instance.PlanDiscipline;
+                IsEnabledDiscipline = false;
+            }
+            if (!string.IsNullOrEmpty(SettingsVM.Instance.PlanSerial))
+            {
+                ViewSerial = SettingsVM.Instance.PlanSerial;
+                IsEnabledSerial = false;
+            }
+        }
+
         #endregion
 
         #region CommandMethods

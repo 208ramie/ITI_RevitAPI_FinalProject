@@ -20,11 +20,20 @@ namespace ITI_RevitAPI_FinalProject.Utilities
 			get
             {
 				if(_instance == null) _instance = new T();
-				return _instance;
+                _instance.onInstanceCalled();
+                return _instance;
 			}
 		}
 
         public static Window Window;
+
+        protected virtual void onInstanceCalled()
+        {
+
+        }
+
+
+
         protected void SwitchToDarkTheme()
         {
             // Replace the current theme with the dark theme

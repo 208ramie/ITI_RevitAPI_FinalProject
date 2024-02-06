@@ -24,7 +24,7 @@ namespace ITI_RevitAPI_FinalProject.View
         public LevelCreatorView()
         {
             InitializeComponent();
-            this.DataContext = LevelCreatorVM.Instance;
+            DataContext = LevelCreatorVM.Instance;
             LevelCreatorVM.Window = this;
             LevelPickerComboBox.SelectedIndex = 0; 
         }

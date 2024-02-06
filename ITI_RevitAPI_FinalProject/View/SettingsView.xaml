@@ -125,12 +125,21 @@
                         <TextBlock Margin="0" Grid.Column="3" TextAlignment="Center" 
                                    Style="{StaticResource Text_PrimaryHeader}">Discipline</TextBlock>
 
-                        <TextBox Tag="{Binding ElementName=TextBoxOne, Path=Text, Mode=OneWay}" Grid.Column="0" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"></TextBox>
-                        <TextBox Tag="{Binding ElementName=TextBoxTwo, Path=Text, Mode=OneWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"></TextBox>
+                        <TextBox 
+                            Tag="{Binding ElementName=TextBoxOne, Path=Text, Mode=OneWay}" 
+                            Grid.Column="0" Grid.Row="1" 
+                            Style="{StaticResource TextBox_Default_Centered}"
+                            Text="{Binding PlanPrefix}">
+                        </TextBox>
+                        <TextBox Text="{Binding PlanSerial}" Tag="{Binding ElementName=TextBoxTwo, Path=Text, Mode=OneWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"></TextBox>
                         <TextBox Tag="{Binding ElementName=TextBoxThree, Path=Text, Mode=OneWay}" 
                                  Grid.Column="2" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
-                                 Text="{Binding LevelName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                        <TextBox Tag="{Binding ElementName=TextBoxFour, Path=Text, Mode=OneWay}" Grid.Column="3" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"></TextBox>
+                                 Text="{Binding PlanName}"></TextBox>
+                        <TextBox Tag="{Binding ElementName=TextBoxFour, Path=Text, Mode=OneWay}" 
+                                 Grid.Column="3" Grid.Row="1" 
+                                 Style="{StaticResource TextBox_Default_Centered}"
+                                 Text="{Binding PlanDiscipline}"
+                                 ></TextBox>
                     </Grid>
 
 

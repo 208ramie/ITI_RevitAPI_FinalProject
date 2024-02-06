@@ -11,8 +11,8 @@ namespace ITI_RevitAPI_FinalProject.View
     {
         public SettingsView()
         {
-            DataContext = SettingsVM.Instance;
             InitializeComponent();
+            DataContext = SettingsVM.Instance;
             SettingsVM.Window = this;
         }
 

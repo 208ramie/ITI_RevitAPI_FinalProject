@@ -57,6 +57,15 @@
         <Setter Property="FontSize"  Value="14" />
         <Setter Property="FontWeight" Value="Medium" />
     </Style>
+    <Style x:Key="Text_PlaceHolderText" TargetType="TextBlock">
+        <Setter Property="Margin" Value="0 10 0 10"/>
+        <Setter Property="FontFamily" Value="Rubik" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Foreground" Value="{StaticResource Brush_BackgroundDisabled}" />
+        <Setter Property="FontSize"  Value="14" />
+        <Setter Property="FontWeight" Value="Medium" />
+    </Style>
     <Style x:Key="Text_Accent" TargetType="TextBlock">
         <Setter Property="Margin" Value="0 10 0 10"/>
         <Setter Property="FontFamily" Value="Comic Sans MS" />

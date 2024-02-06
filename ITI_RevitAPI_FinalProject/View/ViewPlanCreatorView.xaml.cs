@@ -23,6 +23,7 @@ namespace ITI_RevitAPI_FinalProject.View
         public ViewPlanCreatorView()
         {
             InitializeComponent();
+            DataContext = ViewPlanCreatorVM.Instance;
             ViewPlanCreatorVM.Window = this; 
         }
 
