@@ -5,8 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ITI_RevitAPI_FinalProject.View"
         mc:Ignorable="d"
-        Title="ThemeView" Height="450" Width="800">
+        Title="ThemeView"
+        Height="200"
+        Width="300"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Light_Theme.xaml" />
+    </Window.Resources>
     <Grid>
-        
+        <Border 
+            Background="{DynamicResource Brush_Background_Primary}"
+            BorderBrush="{DynamicResource Brush_Border}" 
+            BorderThickness="3" 
+            CornerRadius="15"
+            Padding="20">
+            <StackPanel 
+                VerticalAlignment="Center"> 
+                <StackPanel 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+                    <TextBox
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Width="120"
+                        Height="30"
+                        Foreground="{DynamicResource Brush_Text_Primary}"
+                        Background="{DynamicResource Brush_Background_Secondary}"
+                        >
+                        efwefewfwfwfwe
+                    </TextBox>
+                </StackPanel>
+                <StackPanel 
+                    Orientation="Horizontal">
+                    <CheckBox 
+                        Margin="40 0 0 0" 
+                        VerticalAlignment="Center" 
+                        IsChecked="{Binding DarkModeCheck}"/>
+                    <TextBlock 
+                        Margin="10 3 0 0" 
+                        VerticalAlignment="Center" 
+                        Text="Darkmode"
+                        Foreground="{DynamicResource Brush_Text_Primary}"/>
+                </StackPanel>
+            </StackPanel>
+            </Border>
     </Grid>
 </Window>

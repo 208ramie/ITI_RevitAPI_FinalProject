@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ITI_RevitAPI_FinalProject.ViewModel;
 
 namespace ITI_RevitAPI_FinalProject.View
 {
@@ -22,6 +23,13 @@ namespace ITI_RevitAPI_FinalProject.View
         public ThemeView()
         {
             InitializeComponent();
+            DataContext = ThemeVM.Instance;
+            ThemeVM.Window = this;
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

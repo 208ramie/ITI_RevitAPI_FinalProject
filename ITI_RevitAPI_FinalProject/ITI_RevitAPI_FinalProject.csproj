@@ -89,6 +89,7 @@
     <Compile Include="RevitManager\GridsRenamer.cs" />
     <Compile Include="RevitManager\LevelCreation.cs" />
     <Compile Include="RevitManager\ExternalApp.cs" />
+    <Compile Include="RevitManager\OpenThemeTestWindow.cs" />
     <Compile Include="RevitManager\RHelper.cs" />
     <Compile Include="RevitManager\RSettings.cs" />
     <Compile Include="RevitManager\SettingsManager.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="ViewModel\FromExcelVM.cs" />
     <Compile Include="ViewModel\LevelCreatorVM.cs" />
     <Compile Include="ViewModel\SettingsVM.cs" />
+    <Compile Include="ViewModel\ThemeVM.cs" />
     <Compile Include="ViewModel\ViewPlanCreatorVM.cs" />
     <Compile Include="ViewModel\WorksetCreatorVM.cs" />
     <Compile Include="View\FromExcelView.xaml.cs">

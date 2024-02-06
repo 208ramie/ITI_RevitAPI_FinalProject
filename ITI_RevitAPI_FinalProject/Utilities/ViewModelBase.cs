@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using Autodesk.Revit.UI;
+using ITI_RevitAPI_FinalProject.Properties;
 
 namespace ITI_RevitAPI_FinalProject.Utilities
 {
@@ -32,7 +33,21 @@ namespace ITI_RevitAPI_FinalProject.Utilities
 
         }
 
+        protected void SwitchToDarkTheme(bool dark)
+        {
+            string themePath = "E:\\ITI\\Revit api\\RevitAPI_Proj\\Styles\\Dark_Theme.xaml";
+            var newTheme = new ResourceDictionary { Source = new Uri(themePath, UriKind.Absolute) };
+            Window.Resources.Clear();
+            Window.Resources.MergedDictionaries.Add(newTheme);
 
+        }
+        protected void SwitchToLightTheme(bool light)
+        {
+            string themePath = "E:\\ITI\\Revit api\\RevitAPI_Proj\\Styles\\Light_Theme.xaml";
+            var newTheme = new ResourceDictionary { Source = new Uri(themePath, UriKind.Absolute) };
+            Window.Resources.Clear();
+            Window.Resources.MergedDictionaries.Add(newTheme);
+        }
 
         protected void SwitchToDarkTheme()
         {
