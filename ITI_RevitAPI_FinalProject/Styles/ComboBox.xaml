@@ -34,6 +34,11 @@
         </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>
 
+                            <!--<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                          Storyboard.TargetName="Border">
+                                <EasingColorKeyFrame KeyTime="0" 
+                                                     Value="{StaticResource Color_BackgroundDisabled}" />
+                            </ColorAnimationUsingKeyFrames>-->
 
     <ControlTemplate x:Key="ComboBoxToggleButton"
                      TargetType="{x:Type ToggleButton}">
@@ -57,26 +62,31 @@
                     <VisualState x:Name="Pressed" />
                     <VisualState x:Name="Disabled">
                         <Storyboard>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                                          Storyboard.TargetName="Border">
+                            <ColorAnimationUsingKeyFrames 
+                                Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                Storyboard.TargetName="Border">
                                 <EasingColorKeyFrame KeyTime="0"
                                                      Value="{StaticResource Color_Border}" />
                             </ColorAnimationUsingKeyFrames>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
-                                                          Storyboard.TargetName="Arrow">
+                            <ColorAnimationUsingKeyFrames 
+                                Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
+                                Storyboard.TargetName="Arrow">
                                 <EasingColorKeyFrame KeyTime="0"
                                                      Value="{StaticResource Color_Accent1}" />
                             </ColorAnimationUsingKeyFrames>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                                          Storyboard.TargetName="Border">
+                            <ColorAnimationUsingKeyFrames 
+                                Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                Storyboard.TargetName="Border">
                                 <EasingColorKeyFrame KeyTime="0" 
                                                      Value="{StaticResource Color_Border}" />
                             </ColorAnimationUsingKeyFrames>
-                            <!--<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                                          Storyboard.TargetName="Border">
-                                <EasingColorKeyFrame KeyTime="0" 
+                            <ColorAnimationUsingKeyFrames
+                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                Storyboard.TargetName="BoxBorder">
+                                <EasingColorKeyFrame 
+                                                     KeyTime="0" 
                                                      Value="{StaticResource Color_BackgroundDisabled}" />
-                            </ColorAnimationUsingKeyFrames>-->
+                            </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
                 </VisualStateGroup>
@@ -111,7 +121,7 @@
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
-            <Border Grid.Column="0" CornerRadius="10" BorderThickness="2" >
+            <Border Name="BoxBorder" Grid.Column="0" CornerRadius="10" BorderThickness="2" >
                 <Border.Background>
                     <SolidColorBrush Color="{StaticResource Color_Background_Primary}"/>
                 </Border.Background>
@@ -121,6 +131,7 @@
                     <SolidColorBrush Color="{StaticResource Color_Accent1}"/>
                 </Path.Fill>
             </Path>
+            
         </Grid>
     </ControlTemplate>
     <ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">

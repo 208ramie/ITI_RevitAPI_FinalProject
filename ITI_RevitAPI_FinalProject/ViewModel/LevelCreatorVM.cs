@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms.VisualStyles;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
@@ -135,6 +136,88 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
             SelectedLevel = RHelper.GetAllLevelsInDocument().FirstOrDefault(); 
         }
         #endregion
+
+
+        #region Enable Disable Textbox Props
+
+
+        private bool _isEnabledPrefix = true;
+        private bool _isEnabledSerial = true;
+        private bool _isEnabledName = true;
+        private bool _isEnabledDiscipline = true;
+        public bool IsEnabledPrefix
+        {
+            get { return _isEnabledPrefix; }
+            set { _isEnabledPrefix = value; OnPropertyChanged(); }
+        }
+        public bool IsEnabledSerial
+        {
+            get { return _isEnabledSerial; }
+            set { _isEnabledSerial = value; OnPropertyChanged(); }
+        }
+        public bool IsEnabledName
+        {
+            get { return _isEnabledName; }
+            set { _isEnabledName = value; OnPropertyChanged(); }
+        }
+        public bool IsEnabledDiscipline
+        {
+            get { return _isEnabledDiscipline; }
+            set { _isEnabledDiscipline = value; OnPropertyChanged(); }
+        }
+
+
+        #endregion
+
+
+        #region OnInstanceCalled
+
+        protected override void onInstanceCalled()
+        {
+            if (!string.IsNullOrEmpty(SettingsVM.Instance.LevelPrefix))
+            {
+                LevelPrefix = SettingsVM.Instance.LevelPrefix;
+                IsEnabledPrefix = false;
+            }
+            else
+            {
+                LevelPrefix = "";
+                IsEnabledPrefix = true;
+            }
+            if (!string.IsNullOrEmpty(SettingsVM.Instance.LevelName))
+            {
+                LevelName = SettingsVM.Instance.LevelName;
+                IsEnabledName = false;
+            }
+            else
+            {
+                LevelName = "";
+                IsEnabledName = true;
+            }
+            if (!string.IsNullOrEmpty(SettingsVM.Instance.LevelDiscipline))
+            {
+                LevelDiscipline = SettingsVM.Instance.LevelDiscipline;
+                IsEnabledDiscipline = false;
+            }
+            else
+            {
+                LevelDiscipline = "";
+                IsEnabledDiscipline = true;
+            }
+            if (!string.IsNullOrEmpty(SettingsVM.Instance.LevelSerial))
+            {
+                LevelSerial = SettingsVM.Instance.LevelSerial;
+                IsEnabledSerial = false;
+            }
+            else
+            {
+                LevelSerial = "";
+                IsEnabledSerial = true;
+            }
+        }
+
+        #endregion
+
 
         #region CommandMethods
         private void CreateLevelM(object obj)

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="MainView"
-        Height="670"
+        Height="810"
         Width="1000"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
@@ -53,16 +53,75 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <ComboBox Margin="5 0 5 15" Grid.Column="0" Style="{StaticResource ComboBoxDefault}"></ComboBox>
-                        <ComboBox Margin="5 0 5 15" Grid.Column="1" Style="{StaticResource ComboBoxDefault}"></ComboBox>
-                        <ComboBox Margin="5 0 5 15" Grid.Column="2" Style="{StaticResource ComboBoxDefault}"></ComboBox>
-                        <ComboBox Margin="5 0 5 15" Grid.Column="3" Style="{StaticResource ComboBoxDefault}"></ComboBox>
-                        <ComboBox Margin="5 0 5 15" Grid.Column="4" Style="{StaticResource ComboBoxDefault}"></ComboBox>
-                        <TextBox IsEnabled="{Binding ElementName=TemplateCheckBox, Path=IsChecked}" Name="TextBoxOne" Tag="Input X's" Grid.Column="0" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"></TextBox>
-                        <TextBox IsEnabled="{Binding ElementName=TemplateCheckBox, Path=IsChecked}" Name="TextBoxTwo" Tag="Input X's" Grid.Column="1" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"></TextBox>
-                        <TextBox IsEnabled="{Binding ElementName=TemplateCheckBox, Path=IsChecked}" Name="TextBoxThree" Tag="Input X's" Grid.Column="2" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"></TextBox>
-                        <TextBox IsEnabled="{Binding ElementName=TemplateCheckBox, Path=IsChecked}" Name="TextBoxFour" Tag="Input X's" Grid.Column="3" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"></TextBox>
-                        <TextBox IsEnabled="{Binding ElementName=TemplateCheckBox, Path=IsChecked}" Name="TextBoxFive" Tag="Input X's" Grid.Column="4" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"></TextBox>
+                        <ComboBox 
+                            IsEnabled="{Binding ElementName=TemplateCheckBox, Path=IsChecked}" 
+                            Margin="5 0 5 15" 
+                            Grid.Column="0" 
+                            Style="{StaticResource ComboBoxDefault}"
+                            ></ComboBox>
+                        <ComboBox 
+                            IsEnabled="{Binding ElementName=TemplateCheckBox, Path=IsChecked}" 
+                            Margin="5 0 5 15" 
+                            Grid.Column="1" 
+                            Style="{StaticResource ComboBoxDefault}"
+                            ></ComboBox>
+                        <ComboBox 
+                            IsEnabled="{Binding ElementName=TemplateCheckBox, Path=IsChecked}" 
+                            Margin="5 0 5 15" 
+                            Grid.Column="2" 
+                            Style="{StaticResource ComboBoxDefault}"
+                            ></ComboBox>
+                        <ComboBox 
+                            IsEnabled="{Binding ElementName=TemplateCheckBox, Path=IsChecked}" 
+                            Margin="5 0 5 15" 
+                            Grid.Column="3" 
+                            Style="{StaticResource ComboBoxDefault}"
+                            ></ComboBox>
+                        <ComboBox 
+                            IsEnabled="{Binding ElementName=TemplateCheckBox, Path=IsChecked}" 
+                            Margin="5 0 5 15" 
+                            Grid.Column="4" Style="{StaticResource ComboBoxDefault}"
+                            ></ComboBox>
+                        <TextBox 
+                            IsEnabled="{Binding ElementName=TemplateCheckBox, Path=IsChecked}" 
+                            Name="TextBoxOne" 
+                            Tag="Input X's" 
+                            Grid.Column="0" 
+                            Grid.Row="1" 
+                            Style="{StaticResource TextBox_Default_Centered}"
+                            ></TextBox>
+                        <TextBox 
+                            IsEnabled="{Binding ElementName=TemplateCheckBox, Path=IsChecked}" 
+                            Name="TextBoxTwo" 
+                            Tag="Input X's" 
+                            Grid.Column="1" 
+                            Grid.Row="1" 
+                            Style="{StaticResource TextBox_Default_Centered}"
+                            ></TextBox>
+                        <TextBox 
+                            IsEnabled="{Binding ElementName=TemplateCheckBox, Path=IsChecked}" 
+                            Name="TextBoxThree" 
+                            Tag="Input X's" 
+                            Grid.Column="2" 
+                            Grid.Row="1" 
+                            Style="{StaticResource TextBox_Default_Centered}"
+                            ></TextBox>
+                        <TextBox 
+                            IsEnabled="{Binding ElementName=TemplateCheckBox, Path=IsChecked}" 
+                            Name="TextBoxFour" 
+                            Tag="Input X's" 
+                            Grid.Column="3" 
+                            Grid.Row="1" 
+                            Style="{StaticResource TextBox_Default_Centered}"
+                            ></TextBox>
+                        <TextBox 
+                            IsEnabled="{Binding ElementName=TemplateCheckBox, Path=IsChecked}" 
+                            Name="TextBoxFive" 
+                            Tag="Input X's" 
+                            Grid.Column="4" 
+                            Grid.Row="1" 
+                            Style="{StaticResource TextBox_Default_Centered}"
+                            ></TextBox>
                     </Grid>
 
                     <TextBlock Margin="0 50 0 20" Style="{StaticResource Text_PrimaryHeader}">
@@ -129,29 +188,80 @@
                             Tag="{Binding ElementName=TextBoxOne, Path=Text, Mode=OneWay}" 
                             Grid.Column="0" Grid.Row="1" 
                             Style="{StaticResource TextBox_Default_Centered}"
-                            Text="{Binding PlanPrefix}">
+                            Text="{Binding LevelPrefix}">
                         </TextBox>
-                        <TextBox Text="{Binding PlanSerial}" Tag="{Binding ElementName=TextBoxTwo, Path=Text, Mode=OneWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"></TextBox>
+                        <TextBox Text="{Binding LevelSerial}" Tag="{Binding ElementName=TextBoxTwo, Path=Text, Mode=OneWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"></TextBox>
                         <TextBox Tag="{Binding ElementName=TextBoxThree, Path=Text, Mode=OneWay}" 
                                  Grid.Column="2" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
-                                 Text="{Binding PlanName}"></TextBox>
+                                 Text="{Binding LevelName}"></TextBox>
                         <TextBox Tag="{Binding ElementName=TextBoxFour, Path=Text, Mode=OneWay}" 
                                  Grid.Column="3" Grid.Row="1" 
                                  Style="{StaticResource TextBox_Default_Centered}"
-                                 Text="{Binding PlanDiscipline}"
+                                 Text="{Binding LevelDiscipline}"
                                  ></TextBox>
                     </Grid>
 
+
+                    <TextBlock Margin="0 30 0 20" Style="{StaticResource Text_PrimaryHeader}">
+                        Views Naming Template
+                    </TextBlock>
+
+
+                    <Grid Margin="0,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Margin="0" Grid.Column="0" TextAlignment="Center"
+                                   Style="{StaticResource Text_PrimaryHeader}">
+                            Prefix
+                        </TextBlock>
+                        <TextBlock Margin="0" Grid.Column="1" TextAlignment="Center"
+                                   Style="{StaticResource Text_PrimaryHeader}">
+                            Serial
+                        </TextBlock>
+                        <TextBlock Margin="0" Grid.Column="2" TextAlignment="Center"
+                                   Style="{StaticResource Text_PrimaryHeader}">
+                            View Name
+                        </TextBlock>
+                        <TextBlock Margin="0" Grid.Column="3" TextAlignment="Center"
+                                   Style="{StaticResource Text_PrimaryHeader}">
+                            Discipline
+                        </TextBlock>
+
+                        <TextBox
+                            Tag="{Binding ElementName=TextBoxOne, Path=Text, Mode=OneWay}"
+                            Grid.Column="0" Grid.Row="1"
+                            Style="{StaticResource TextBox_Default_Centered}"
+                            Text="{Binding PlanPrefix}" />
+                        <TextBox Text="{Binding PlanSerial}"
+                                 Tag="{Binding ElementName=TextBoxTwo, Path=Text, Mode=OneWay}" Grid.Column="1"
+                                 Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}" />
+                        <TextBox Tag="{Binding ElementName=TextBoxThree, Path=Text, Mode=OneWay}"
+                                 Grid.Column="2" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
+                                 Text="{Binding PlanName}" />
+                        <TextBox Tag="{Binding ElementName=TextBoxFour, Path=Text, Mode=OneWay}"
+                                 Grid.Column="3" Grid.Row="1"
+                                 Style="{StaticResource TextBox_Default_Centered}"
+                                 Text="{Binding PlanDiscipline}" />
+                    </Grid>
 
 
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                     <Button Style="{StaticResource Button_Default_Alt}" 
-                            Content="New Layer"
-                            Command="{Binding CreateNewLayer}"/>
+                            Content="Cancel"
+                            Command="{Binding Run}"/>
                     <Button 
                         Style="{StaticResource Button_Accent}" 
-                        Content="Run"
+                        Content="Save"
                         Command="{Binding Run}"/>
                 </StackPanel>
             </StackPanel>

@@ -37,7 +37,35 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
 
         #endregion
 
+        #region Levels Props
 
+        private string _levelPrefix;
+        private string _levelSerial;
+        private string _levelName;
+        private string _levelDiscipline;
+
+        public string LevelPrefix
+        {
+            get { return _levelPrefix; }
+            set { _levelPrefix = value; OnPropertyChanged(); }
+        }
+        public string LevelSerial
+        {
+            get { return _levelSerial; }
+            set { _levelSerial = value; OnPropertyChanged(); }
+        }
+        public string LevelName
+        {
+            get { return _levelName; }
+            set { _levelName = value; OnPropertyChanged(); }
+        }
+        public string LevelDiscipline
+        {
+            get { return _levelDiscipline; }
+            set { _levelDiscipline = value; OnPropertyChanged(); }
+        }
+
+        #endregion
 
         private bool _darkModeCheck;
         public bool DarkModeCheck { 
@@ -50,38 +78,8 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
                 else SwitchToLightTheme();
             }
         }
-
-        #region trials
-        private string _levelName;
-
-        public string LevelName
-        {
-            get => _levelName;
-            set
-            {
-                _levelName = value;
-                OnPropertyChanged();
-            }
-        }
-
-
-
-        #endregion
-
-
         public RelayCommand Run { get; set; }
-
-
-        public SettingsVM()
-        {
-            Run = new RelayCommand(RunM);
-        }
-
-        public void RunM(object obj)
-        {
-            TaskDialog.Show("Title", "Body");
-
-            RevitManager.RSettings.LevelName = LevelName; 
-        }
+        public SettingsVM() => Run = new RelayCommand(RunM);
+        public void RunM(object obj) => Window.Close();
     }
 }

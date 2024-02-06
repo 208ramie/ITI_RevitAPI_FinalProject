@@ -109,20 +109,40 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
                 ViewPrefix = SettingsVM.Instance.PlanPrefix;
                 IsEnabledPrefix = false;
             }
+            else
+            {
+                ViewPrefix = "";
+                IsEnabledPrefix = true;
+            }
             if (!string.IsNullOrEmpty(SettingsVM.Instance.PlanName))
             {
                 ViewName = SettingsVM.Instance.PlanName;
                 IsEnabledName = false;
+            }
+            else
+            {
+                ViewName = "";
+                IsEnabledName = true;
             }
             if (!string.IsNullOrEmpty(SettingsVM.Instance.PlanDiscipline))
             {
                 ViewDiscipline = SettingsVM.Instance.PlanDiscipline;
                 IsEnabledDiscipline = false;
             }
+            else
+            {
+                ViewDiscipline = "";
+                IsEnabledDiscipline = true;
+            }
             if (!string.IsNullOrEmpty(SettingsVM.Instance.PlanSerial))
             {
                 ViewSerial = SettingsVM.Instance.PlanSerial;
                 IsEnabledSerial = false;
+            }
+            else
+            {
+                ViewSerial = "";
+                IsEnabledSerial = true;
             }
         }
 

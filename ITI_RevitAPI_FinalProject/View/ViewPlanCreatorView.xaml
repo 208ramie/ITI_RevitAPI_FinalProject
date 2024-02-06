@@ -69,7 +69,6 @@
 
                     <ComboBox Name="LevelPickerComboBox"
                               Grid.Column="1"
-                              IsEnabled="False"
                               Style="{StaticResource ComboBoxDefault}"
                               ItemsSource="{Binding DocumentLevels}"
                               DisplayMemberPath="Name"
