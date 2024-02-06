@@ -69,6 +69,7 @@
 
                     <ComboBox Name="LevelPickerComboBox"
                               Grid.Column="1"
+                              IsEnabled="False"
                               Style="{StaticResource ComboBoxDefault}"
                               ItemsSource="{Binding DocumentLevels}"
                               DisplayMemberPath="Name"
@@ -106,7 +107,7 @@
                     <TextBlock Margin="0" Grid.Column="3" TextAlignment="Center" 
                                    Style="{StaticResource Text_PrimaryHeader}">Discipline</TextBlock>
 
-                    <TextBox Tag="{Binding ElementName=TextBoxOne, Path=Text, Mode=OneWay}"
+                    <TextBox Tag="LV"
                              IsEnabled="{Binding IsEnabledPrefix}"
                              Grid.Column="0" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
                              Text="{Binding ViewPrefix, UpdateSourceTrigger=PropertyChanged}"
@@ -121,7 +122,7 @@
                              Grid.Column="2" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
                              Text="{Binding ViewName, UpdateSourceTrigger=PropertyChanged}"
                              />
-                    <TextBox Tag="{Binding ElementName=TextBoxFour, Path=Text, Mode=OneWay}" 
+                    <TextBox Tag="Disc" 
                              IsEnabled="{Binding IsEnabledDiscipline}"
                              Grid.Column="3" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
                              Text="{Binding ViewDiscipline, UpdateSourceTrigger=PropertyChanged}"
