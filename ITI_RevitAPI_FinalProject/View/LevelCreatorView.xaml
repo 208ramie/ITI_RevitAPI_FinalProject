@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ITI_RevitAPI_FinalProject.View"
         mc:Ignorable="d"
         Title="LevelCreatorView" 
-        Height="440"
+        Height="451"
         Width="800"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
@@ -236,13 +236,18 @@
 
 
                 <StackPanel 
-                    HorizontalAlignment="Center">
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <Button 
+                        Style="{StaticResource Button_Default_Alt}" 
+                        Content="Cancel"
+                        Click="Close_OnClick"
+                        Margin="0 20 20 0" />
                     <Button 
                         Style="{StaticResource Button_Accent}" 
                         Content="Create"
                         Command="{Binding CreateLevelCommand}"
-                        Margin="0 15 0 0"
-                        Width="200"/>
+                        Margin="0 15 0 0"/>
 
                 </StackPanel>
             </StackPanel>
@@ -272,6 +277,14 @@
               Y2="70"
               Stroke="{StaticResource Brush_Accent1}"
               StrokeThickness="2" />
+        <Button 
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Style="{StaticResource Button_Default}" 
+            Content="Open Settings"
+            Command="{Binding OpenSettings}"
+            Margin="20 20 20 20" 
+            Width="150"/>
 
     </Grid>
 </Window>

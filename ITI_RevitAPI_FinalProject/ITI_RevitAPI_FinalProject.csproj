@@ -113,6 +113,9 @@
     <Compile Include="View\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ThemeView.xaml.cs">
+      <DependentUpon>ThemeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ViewPlanCreatorView.xaml.cs">
       <DependentUpon>ViewPlanCreatorView.xaml</DependentUpon>
     </Compile>
@@ -209,6 +212,10 @@
     <Page Include="View\SettingsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ThemeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ViewPlanCreatorView.xaml">
       <SubType>Designer</SubType>

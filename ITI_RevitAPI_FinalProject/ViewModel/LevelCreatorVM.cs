@@ -10,6 +10,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using ITI_RevitAPI_FinalProject.RevitManager;
 using ITI_RevitAPI_FinalProject.Utilities;
+using ITI_RevitAPI_FinalProject.View;
 
 namespace ITI_RevitAPI_FinalProject.ViewModel
 {
@@ -126,6 +127,7 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
 
         #region Commands
         public RelayCommand CreateLevelCommand { get; set; }
+        public RelayCommand OpenSettings { get; set; }
         #endregion
 
         #region Constructor
@@ -134,6 +136,7 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
             CreateLevelCommand = new RelayCommand(CreateLevelM);
             UpdateTotalElevation();
             SelectedLevel = RHelper.GetAllLevelsInDocument().FirstOrDefault(); 
+            OpenSettings = new RelayCommand(OpenSettingsCommand);
         }
         #endregion
 
@@ -228,6 +231,11 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
                 RHelper.CreateLevel(SelectedLevel, LevelElevation, CombinedLevelName, IsLevelPinned, IsViewPlan);
 
             Window.Close();
+        }
+        private void OpenSettingsCommand(object obj)
+        {
+            Window.Close();
+            new SettingsView().ShowDialog();
         }
         #endregion
 

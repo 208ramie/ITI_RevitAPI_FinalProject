@@ -6,7 +6,7 @@
         xmlns:vm="clr-namespace:ITI_RevitAPI_FinalProject.ViewModel" 
         mc:Ignorable="d"
         Title="WorksetCreatorView"
-        Height="275"
+        Height="281"
         Width="500"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
@@ -109,7 +109,13 @@
 
 
                 <StackPanel 
-                    HorizontalAlignment="Center">
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+                    <Button 
+                        Style="{StaticResource Button_Default_Alt}" 
+                        Content="Cancel"
+                        Click="Close_OnClick"
+                        Margin="0 20 20 0" />
                     <Button 
                         Style="{StaticResource Button_Accent}" 
                         Content="Create"

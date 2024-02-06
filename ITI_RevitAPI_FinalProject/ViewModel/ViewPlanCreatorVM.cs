@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Autodesk.Revit.DB;
 using ITI_RevitAPI_FinalProject.RevitManager;
 using ITI_RevitAPI_FinalProject.Utilities;
+using ITI_RevitAPI_FinalProject.View;
 
 namespace ITI_RevitAPI_FinalProject.ViewModel
 {
@@ -90,6 +91,7 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
 
         #region Commands
         public RelayCommand CreateViewPlanCommand { get; set; }
+        public RelayCommand OpenSettings { get; set; }
         #endregion
 
         #region ctor
@@ -97,7 +99,10 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
         {
             CreateViewPlanCommand = new RelayCommand(CreateViewPlanM);
             SelectedLevel = RHelper.GetAllLevelsInDocument().FirstOrDefault();
+            OpenSettings = new RelayCommand(OpenSettingsCommand);
         }
+
+        
         #endregion
 
         #region OnInstanceCalled
@@ -153,6 +158,11 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
         {
             RHelper.CreateViewPlan(SelectedLevel, CombinedViewPlanName);
             Window.Close();
+        }
+        private void OpenSettingsCommand(object obj)
+        {
+            Window.Close();
+            new SettingsView().ShowDialog();
         }
         #endregion
 
