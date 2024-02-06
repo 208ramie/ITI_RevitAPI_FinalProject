@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="MainView"
-        Height="810"
+        Height="480"
         Width="1000"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
@@ -32,7 +32,7 @@
                     
                     
                     
-                    <StackPanel Orientation="Horizontal">
+                    <!--<StackPanel Orientation="Horizontal">
                         <CheckBox Name="TemplateCheckBox" Style="{StaticResource CheckBox_Default}" VerticalAlignment="Center" Margin="10 0 10 0"></CheckBox>
                         <TextBlock Style="{StaticResource Text_PrimaryHeader}">
                              Naming Template
@@ -153,12 +153,12 @@
                         <TextBox Tag="{Binding ElementName=TextBoxThree, Path=Text, Mode=OneWay}" Grid.Column="2" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"></TextBox>
                         <TextBox Tag="{Binding ElementName=TextBoxFour, Path=Text, Mode=OneWay}" Grid.Column="3" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"></TextBox>
                         <TextBox Tag="{Binding ElementName=TextBoxFive, Path=Text, Mode=OneWay}" Grid.Column="4" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"></TextBox>
-                    </Grid>
+                    </Grid>-->
 
 
 
 
-                    <TextBlock Margin="0 30 0 20" Style="{StaticResource Text_PrimaryHeader}">
+                    <TextBlock Margin="0 15 0 20" Style="{StaticResource Text_PrimaryHeader}">
                         Levels Naming Template
                     </TextBlock>
 
