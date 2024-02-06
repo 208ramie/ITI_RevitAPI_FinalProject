@@ -152,7 +152,7 @@
                             <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource Brush_Accent1}" />
                         </Trigger>
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource Brush_Background_Secondary}" />
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource Brush_White}" />
                             <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource Brush_Accent1}" />
                             <!--<Setter Property="Effect">
                                 <Setter.Value>

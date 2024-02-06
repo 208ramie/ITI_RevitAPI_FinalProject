@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Color x:Key="Color_Border">#091429</Color>
+    <Color x:Key="Color_White">#fff</Color>
     <Color x:Key="Color_Background_Primary">#F5F5F5</Color>
     <Color x:Key="Color_Background_Secondary">#E0E0E0</Color>
     <Color x:Key="Color_BackgroundDisabled">#C9C9C9</Color>
@@ -11,6 +12,7 @@
     <Color x:Key="Color_Accent2">#3AF03F</Color>
 
     <SolidColorBrush x:Key="Brush_Border" Color="{StaticResource Color_Border}"/>
+    <SolidColorBrush x:Key="Brush_White" Color="{StaticResource Color_White}"/>
     <SolidColorBrush x:Key="Brush_Background_Primary" Color="{StaticResource Color_Background_Primary}"/>
     <SolidColorBrush x:Key="Brush_Background_Secondary" Color="{StaticResource Color_Background_Secondary}"/>
     <SolidColorBrush x:Key="Brush_BackgroundDisabled" Color="{StaticResource Color_BackgroundDisabled}"/>

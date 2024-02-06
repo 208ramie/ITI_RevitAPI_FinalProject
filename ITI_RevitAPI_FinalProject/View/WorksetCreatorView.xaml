@@ -115,7 +115,7 @@
                         Content="Create"
                         Command="{Binding CreateCommand}"
                         Margin="0 15 0 0"
-                        Width="200"/>
+                        />
 
                 </StackPanel>
             </StackPanel>
