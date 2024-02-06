@@ -15,19 +15,7 @@
         MouseLeftButtonDown="Window_MouseLeftButtonDown">
 
     <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Styles/Light_Theme.xaml" />
-                <ResourceDictionary Source="../Styles/ScrollViewer.xaml" />
-                <ResourceDictionary Source="../Styles/Page.xaml" />
-                <ResourceDictionary Source="../Styles/Image.xaml" />
-                <ResourceDictionary Source="../Styles/Text.xaml" />
-                <ResourceDictionary Source="../Styles/TextBox.xaml" />
-                <ResourceDictionary Source="../Styles/ComboBox.xaml" />
-                <ResourceDictionary Source="../Styles/Button.xaml" />
-                <ResourceDictionary Source="../Styles/DataGrid.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Light_Resources.xaml" />
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>

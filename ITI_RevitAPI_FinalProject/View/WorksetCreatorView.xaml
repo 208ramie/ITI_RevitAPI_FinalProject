@@ -31,9 +31,9 @@
         </ResourceDictionary>
     </Window.Resources>-->
 
-        <Window.Resources>
-            <ResourceDictionary Source="pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Resources.xaml" />
-        </Window.Resources>
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Light_Resources.xaml" />
+    </Window.Resources>
 
     <Window.DataContext>
         <vm:WorksetCreatorVM x:Name="Instance" />
