@@ -10,17 +10,6 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
 {
     public class ThemeVM : ViewModelBase<ThemeVM>
     {
-        private bool _darkModeCheck;
-        public bool DarkModeCheck
-        {
-            get => _darkModeCheck;
-            set
-            {
-                _darkModeCheck = value;
-                OnPropertyChanged();
-                if (_darkModeCheck) SwitchToDarkTheme(true);
-                else SwitchToLightTheme(true);
-            }
-        }
+        
     }
 }

@@ -13,26 +13,15 @@
         WindowStyle="None"
         Background="Transparent"
         ResizeMode="NoResize"
+        DataContextChanged="OnInitializeCompleted"
         MouseDown="WorksetCreatorView_OnMouseDown">
 
-    <!--<Window.Resources>
+    <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Styles/Light_Theme.xaml" />
-                <ResourceDictionary Source="../Styles/ScrollViewer.xaml" />
-                <ResourceDictionary Source="../Styles/Page.xaml" />
-                <ResourceDictionary Source="../Styles/Image.xaml" />
-                <ResourceDictionary Source="../Styles/Text.xaml" />
-                <ResourceDictionary Source="../Styles/TextBox.xaml" />
-                <ResourceDictionary Source="../Styles/ComboBox.xaml" />
-                <ResourceDictionary Source="../Styles/Button.xaml" />
-                <ResourceDictionary Source="../Styles/DataGrid.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Light_Theme.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </Window.Resources>-->
-
-    <Window.Resources>
-        <ResourceDictionary Source="pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Light_Resources.xaml" />
     </Window.Resources>
 
     <Window.DataContext>
@@ -41,17 +30,17 @@
 
     <Grid>
         <Border 
-            Background="{StaticResource Brush_Background_Primary}"
-            BorderBrush="{StaticResource Brush_Border}" 
+            Background="{DynamicResource Brush_Background_Primary}"
+            BorderBrush="{DynamicResource Brush_Border}" 
             BorderThickness="2" 
             CornerRadius="15"
             Padding="20">
             <StackPanel>
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                    <Button Style="{StaticResource Button_Info}" 
-                            Width="30" Height="30" Click="Minimize_OnClick"></Button>
-                    <Button Style="{StaticResource Button_Accent}" 
-                            Width="30" Height="30" Click="Close_OnClick"></Button>
+                    <Button Style="{DynamicResource Button_Info}" 
+                            Width="30" Height="30" Command="{Binding MinimizeCommand}"></Button>
+                    <Button Style="{DynamicResource Button_Accent}" 
+                            Width="30" Height="30" Command="{Binding CloseCommand}"></Button>
                 </StackPanel>
 
 
@@ -74,7 +63,7 @@
 
 
                 <TextBlock Margin="0 30 0 10" 
-                           Style="{StaticResource Text_PrimaryHeader}"
+                           Style="{DynamicResource Text_PrimaryHeader}"
                            FontSize="20">
                     Workset Name
                 </TextBlock>
@@ -90,18 +79,18 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Margin="0" Grid.Column="0" TextAlignment="Center" 
-                                   Style="{StaticResource Text_PrimaryHeader}">Discipline</TextBlock>
+                                   Style="{DynamicResource Text_PrimaryHeader}">Discipline</TextBlock>
                     <TextBlock Margin="0" Grid.Column="1" TextAlignment="Center" 
-                                   Style="{StaticResource Text_PrimaryHeader}">Workset Name</TextBlock>
+                                   Style="{DynamicResource Text_PrimaryHeader}">Workset Name</TextBlock>
 
                     <TextBox Tag="Disc"
                              Grid.Column="0" Grid.Row="1" 
-                             Style="{StaticResource TextBox_Default_Centered}"
+                             Style="{DynamicResource TextBox_Default_Centered}"
                              Text="{Binding Discipline, UpdateSourceTrigger=PropertyChanged}"
                              />
                     <TextBox Tag="Name" 
                              Grid.Column="1" Grid.Row="1" 
-                             Style="{StaticResource TextBox_Default_Centered}"
+                             Style="{DynamicResource TextBox_Default_Centered}"
                              Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
                              />
                 </Grid>
@@ -112,12 +101,12 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
                     <Button 
-                        Style="{StaticResource Button_Default_Alt}" 
+                        Style="{DynamicResource Button_Default_Alt}" 
                         Content="Cancel"
-                        Click="Close_OnClick"
+                        Command="{Binding CloseCommand}"
                         Margin="0 20 20 0" />
                     <Button 
-                        Style="{StaticResource Button_Accent}" 
+                        Style="{DynamicResource Button_Accent}" 
                         Content="Create"
                         Command="{Binding CreateCommand}"
                         Margin="0 15 0 0"
@@ -140,7 +129,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
                        Margin="0"
-                       Style="{StaticResource Text_PrimaryHeader}"
+                       Style="{DynamicResource Text_PrimaryHeader}"
                        FontSize="20">
                 Create a Workset
             </TextBlock>
@@ -150,7 +139,7 @@
               Y1="70"
               X2="1300"
               Y2="70"
-              Stroke="{StaticResource Brush_Accent1}"
+              Stroke="{DynamicResource Brush_Accent1}"
               StrokeThickness="2" />
 
     </Grid>

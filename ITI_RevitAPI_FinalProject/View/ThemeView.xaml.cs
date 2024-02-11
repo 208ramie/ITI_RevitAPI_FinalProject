@@ -23,13 +23,18 @@ namespace ITI_RevitAPI_FinalProject.View
         public ThemeView()
         {
             InitializeComponent();
+            ThemeVM.window = this;
             DataContext = ThemeVM.Instance;
-            ThemeVM.Window = this;
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

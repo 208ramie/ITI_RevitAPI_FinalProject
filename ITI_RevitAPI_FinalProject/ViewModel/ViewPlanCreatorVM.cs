@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Autodesk.Revit.DB;
@@ -11,7 +12,7 @@ using ITI_RevitAPI_FinalProject.View;
 
 namespace ITI_RevitAPI_FinalProject.ViewModel
 {
-    internal class ViewPlanCreatorVM : ViewModelBase<ViewPlanCreatorVM>
+    public class ViewPlanCreatorVM : ViewModelBase<ViewPlanCreatorVM>
     {
         #region Fields
         private string _viewPrefix;
@@ -21,7 +22,6 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
         private ObservableCollection<Level> _documentLevels;
         private Level _selectedLevel;
         #endregion"
-
         #region properties
         public ObservableCollection<Level> DocumentLevels
         {
@@ -61,7 +61,6 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
             }
         }
         #endregion
-
         #region Enable Disable Textbox Props
         private bool _isEnabledPrefix = true;
         private bool _isEnabledSerial = true;
@@ -88,12 +87,10 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
             set { _isEnabledDiscipline = value; OnPropertyChanged(); }
         }
         #endregion
-
         #region Commands
         public RelayCommand CreateViewPlanCommand { get; set; }
         public RelayCommand OpenSettings { get; set; }
         #endregion
-
         #region ctor
         public ViewPlanCreatorVM()
         {
@@ -104,11 +101,12 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
 
         
         #endregion
-
         #region OnInstanceCalled
 
-        protected override void onInstanceCalled()
+        public override void OnWindowInitialized(object obj)
         {
+
+            base.OnWindowInitialized(obj);
             if (!string.IsNullOrEmpty(SettingsVM.Instance.PlanPrefix))
             {
                 ViewPrefix = SettingsVM.Instance.PlanPrefix;
@@ -152,24 +150,17 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
         }
 
         #endregion
-
         #region CommandMethods
         private void CreateViewPlanM(object obj)
         {
             RHelper.CreateViewPlan(SelectedLevel, CombinedViewPlanName);
-            Window.Close();
+            window.Close();
         }
         private void OpenSettingsCommand(object obj)
         {
-            Window.Close();
+            window.Close();
             new SettingsView().ShowDialog();
         }
         #endregion
-
-
-
-
-
-
     }
 }

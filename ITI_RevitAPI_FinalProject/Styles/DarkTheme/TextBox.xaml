@@ -1,0 +1,181 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Dark_Colors.xaml" />
+        <ResourceDictionary Source="Text.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+
+    <Style x:Key="TextBox_Default" TargetType="TextBox">
+        <Setter Property="Foreground" Value="{StaticResource Brush_Text_Primary}" />
+        <Setter Property="Background" Value="{StaticResource Brush_Background_Primary}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Brush_Border}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="MinWidth" Value="150"/>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Grid>
+                        <Border 
+                            x:Name="border" 
+                            Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            CornerRadius="10">
+                            <!--<ScrollViewer x:Name="PART_ContentHost" />-->
+                            <!--<Border.Effect>
+                                <DropShadowEffect 
+                                    x:Name="effect" 
+                                    Color="{StaticResource Color_Accent}" 
+                                    Direction="315" 
+                                    ShadowDepth="0" 
+                                    BlurRadius="7"
+                                    RenderingBias="Quality"/>
+                            </Border.Effect>-->
+                        </Border>
+                        <TextBlock 
+                            Height="{TemplateBinding Height}"
+                            Text="{TemplateBinding Text}" 
+                            VerticalAlignment="Center" 
+                            Style="{StaticResource Text_PrimaryText}" 
+                            Margin="4,0,0,0"
+                            Padding="{TemplateBinding Padding}"/>
+                        <TextBlock 
+                            x:Name="placeholderText" 
+                            VerticalAlignment="Center" 
+                            Text="{TemplateBinding Tag}" 
+                            Margin="15,0,0,0" 
+                            Style="{StaticResource Text_SecondaryText}" 
+                            Visibility="Collapsed" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource Brush_Background_Primary}" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource Brush_Accent1}" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource Brush_Background_Secondary}" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource Brush_Accent1}" />
+                            <!--<Setter Property="Effect">
+                                <Setter.Value>
+                                    <BlurEffect Radius="10"/>
+                                </Setter.Value>
+                            </Setter>-->
+                            <!--<Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" Color="{StaticResource Color_Accent}" BlurRadius="7" Opacity="0.8"/>
+                                </Setter.Value>
+                            </Setter>-->
+                        </Trigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter TargetName="placeholderText" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TextBox_Default_Centered" TargetType="TextBox">
+        <Setter Property="Foreground" Value="{StaticResource Brush_Text_Primary}" />
+        <Setter Property="Background" Value="{StaticResource Brush_Background_Primary}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Brush_Border}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Padding" Value="10" />
+        <!--<Setter Property="MaxLength" Value="3"></Setter>-->
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="MinWidth" Value="80"/>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Grid>
+                        <Border 
+                            x:Name="border" 
+                            Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            CornerRadius="10">
+                            <!--<ScrollViewer x:Name="PART_ContentHost" />-->
+                            <!--<Border.Effect>
+                                <DropShadowEffect 
+                                    x:Name="effect" 
+                                    Color="{StaticResource Color_Accent}" 
+                                    Direction="315" 
+                                    ShadowDepth="0" 
+                                    BlurRadius="7"
+                                    RenderingBias="Quality"/>
+                            </Border.Effect>-->
+                            <!--<ScrollViewer x:Name="PART_ContentHost" 
+                                          Height="{TemplateBinding Height}"
+                                          VerticalAlignment="Center"
+                                          FontFamily="Rubik"
+                                          HorizontalAlignment="Center"
+                                          Foreground="{StaticResource Brush_Text_Primary}"
+                                          FontSize="14"
+                                          FontWeight="Black"
+                                          Margin="0,0,0,0"
+                                          Padding="{TemplateBinding Padding}"/>-->
+                        </Border>
+                        <TextBlock 
+                            Height="{TemplateBinding Height}"
+                            Text="{TemplateBinding Text}" 
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            TextAlignment="Center"
+                            Style="{StaticResource Text_PrimaryText}" 
+                            Margin="0,0,0,0"
+                            Padding="{TemplateBinding Padding}"/>
+                        <TextBlock 
+                            x:Name="placeholderText" 
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            TextAlignment="Center"
+                            Text="{TemplateBinding Tag}" 
+                            Margin="0,0,0,0" 
+                            Style="{StaticResource Text_PlaceHolderText}" 
+                            Visibility="Collapsed" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource Brush_Background_Primary}" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource Brush_Accent1}" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource Brush_Background_Secondary}" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource Brush_Accent1}" />
+                            <!--<Setter Property="Effect">
+                                <Setter.Value>
+                                    <BlurEffect Radius="10"/>
+                                </Setter.Value>
+                            </Setter>-->
+                            <!--<Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" Color="{StaticResource Color_Accent}" BlurRadius="7" Opacity="0.8"/>
+                                </Setter.Value>
+                            </Setter>-->
+                        </Trigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter TargetName="placeholderText" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource Brush_BackgroundDisabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+</ResourceDictionary>

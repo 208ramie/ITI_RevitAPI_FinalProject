@@ -24,22 +24,12 @@ namespace ITI_RevitAPI_FinalProject.View
         {
             InitializeComponent();
             DataContext = ViewPlanCreatorVM.Instance;
-            ViewPlanCreatorVM.Window = this; 
         }
+        private void OnInitializeCompleted(object sender, DependencyPropertyChangedEventArgs e) => ViewPlanCreatorVM.Instance.OnWindowInitialized(sender);
 
         private void WorksetCreatorView_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
-        }
-
-        private void Minimize_OnClick(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized; 
-        }
-
-        private void Close_OnClick(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

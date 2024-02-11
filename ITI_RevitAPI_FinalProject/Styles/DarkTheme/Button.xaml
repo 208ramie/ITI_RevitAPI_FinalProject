@@ -3,13 +3,13 @@
                     xmlns:colors="Styles/Colors.xaml">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Light_Theme.xaml" />
+        <ResourceDictionary Source="Dark_Colors.xaml" />
         <ResourceDictionary Source="Text.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="Button_Accent" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource Brush_Accent1}"/>
-        <Setter Property="Foreground" Value="{StaticResource Brush_Background_Primary}" />
+        <Setter Property="Foreground" Value="{StaticResource Brush_Text_Primary}" />
         <Setter Property="BorderBrush" Value="{StaticResource Brush_Background_Primary}" />
         <Setter Property="BorderThickness" Value="3" />
         <Setter Property="Cursor" Value="Hand"/>

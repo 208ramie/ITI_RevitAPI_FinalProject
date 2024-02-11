@@ -3,7 +3,7 @@
 
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Light_Theme.xaml" />
+        <ResourceDictionary Source="Dark_Colors.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 
@@ -61,7 +61,7 @@
                             <Setter TargetName="CheckMark" Property="Data" Value="M 0 7 L 7 0" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource Brush_Accent1}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource Brush_Accent2}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
                             <Setter TargetName="Border" Property="Background" Value="{StaticResource Brush_Background_Secondary}" />

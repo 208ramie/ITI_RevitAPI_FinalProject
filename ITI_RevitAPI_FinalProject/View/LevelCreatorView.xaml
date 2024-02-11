@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ITI_RevitAPI_FinalProject.View"
         mc:Ignorable="d"
         Title="LevelCreatorView" 
         Height="451"
@@ -13,30 +12,34 @@
         WindowStyle="None"
         Background="Transparent"
         ResizeMode="NoResize"
+        DataContextChanged="OnInitializeCompleted"
         MouseDown="LevelCreatorView_OnMouseDown">
+
     <Window.Resources>
-        <ResourceDictionary Source="pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Light_Resources.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Light_Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
+
     <Grid>
         <Border 
-            Background="{StaticResource Brush_Background_Primary}"
-            BorderBrush="{StaticResource Brush_Border}" 
+            Background="{DynamicResource Brush_Background_Primary}"
+            BorderBrush="{DynamicResource Brush_Border}" 
             BorderThickness="2" 
             CornerRadius="15"
             Padding="20">
             <StackPanel>
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                    <Button Style="{StaticResource Button_Info}" 
-                            Width="30" Height="30" Click="Minimize_OnClick"></Button>
-                    <Button Style="{StaticResource Button_Accent}" 
-                            Width="30" Height="30" Click="Close_OnClick"></Button>
+                    <Button Style="{DynamicResource Button_Info}" 
+                            Width="30" Height="30" Command="{Binding MinimizeCommand}"></Button>
+                    <Button Style="{DynamicResource Button_Accent}" 
+                            Width="30" Height="30" Command="{Binding CloseCommand}"></Button>
                 </StackPanel>
 
-
-
-
                 <TextBlock Margin="0 30 0 15" 
-                           Style="{StaticResource Text_PrimaryHeader}"
+                           Style="{DynamicResource Text_PrimaryHeader}"
                            FontSize="20">
                      Level Properties
                 </TextBlock>
@@ -57,7 +60,7 @@
                                Margin="0"
                                Grid.Row="0" Grid.Column="0"
                                TextAlignment="Center"
-                               Style="{StaticResource Text_PrimaryHeader}">
+                               Style="{DynamicResource Text_PrimaryHeader}">
                         Level to offset from
                     </TextBlock>
 
@@ -66,7 +69,7 @@
                                Grid.Row="0"
                                Grid.Column="1"
                                TextAlignment="Center"
-                               Style="{StaticResource Text_PrimaryHeader}">
+                               Style="{DynamicResource Text_PrimaryHeader}">
                         Elevation
                     </TextBlock>
 
@@ -74,7 +77,7 @@
                     <ComboBox Name="LevelPickerComboBox"
                               Grid.Column="0"
                               Grid.Row="1"
-                              Style="{StaticResource ComboBoxDefault}"
+                              Style="{DynamicResource ComboBoxDefault}"
                               ItemsSource="{Binding DocumentLevels}"
                               DisplayMemberPath="Name"
                               SelectedItem="{Binding SelectedLevel, UpdateSourceTrigger=PropertyChanged}"
@@ -83,7 +86,7 @@
                     <TextBox Name="ElevationTextBox"
                              Grid.Column="1"
                              Grid.Row="1"
-                             Style="{StaticResource TextBox_Default_Centered}"
+                             Style="{DynamicResource TextBox_Default_Centered}"
                              Text="{Binding LevelElevation, UpdateSourceTrigger=PropertyChanged}" 
                              GotFocus="TextBox_OnGotFocus"
                              />
@@ -95,7 +98,7 @@
                                 Margin="5"
                                 >
                         <CheckBox Name="AbsoluteElevationCheckBox"
-                                  Style="{StaticResource CheckBox_Default}"
+                                  Style="{DynamicResource CheckBox_Default}"
                                   Margin="0 1 10 0"
                                   IsChecked="{Binding IsElevationAbsolute, UpdateSourceTrigger=PropertyChanged}"
                                   Checked="AbsoluteElevationCheckBox_OnChecked"
@@ -107,7 +110,7 @@
                                    Grid.Row="0"
                                    Grid.Column="1"
                                    TextAlignment="Center"
-                                   Style="{StaticResource Text_PrimaryHeader}"
+                                   Style="{DynamicResource Text_PrimaryHeader}"
                                    MouseDown="AbsoluteElevationTextBlock_OnMouseDown">
                             Absolute elevation
                         </TextBlock>
@@ -115,7 +118,7 @@
 
                         <CheckBox Name="IsViewPlanCheckBox"
                                   Margin="30 1 10 0"
-                                  Style="{StaticResource CheckBox_Default}"
+                                  Style="{DynamicResource CheckBox_Default}"
                                   IsChecked="{Binding IsViewPlan, UpdateSourceTrigger=PropertyChanged}"
                         />
 
@@ -124,7 +127,7 @@
                                    Grid.Row="0"
                                    Grid.Column="1"
                                    TextAlignment="Center"
-                                   Style="{StaticResource Text_PrimaryHeader}"
+                                   Style="{DynamicResource Text_PrimaryHeader}"
                                    MouseDown="IsViewPlanTextBlock_OnMouseDown">
                             Create view
                         </TextBlock>
@@ -133,7 +136,7 @@
 
                         <CheckBox Name="IsPinnedCheckBox"
                                   Margin="30 1 10 0"
-                                  Style="{StaticResource CheckBox_Default}"
+                                  Style="{DynamicResource CheckBox_Default}"
                                   IsChecked="{Binding IsLevelPinned, UpdateSourceTrigger=PropertyChanged}"
                         />
 
@@ -142,7 +145,7 @@
                                    Grid.Row="0"
                                    Grid.Column="1"
                                    TextAlignment="Center"
-                                   Style="{StaticResource Text_PrimaryHeader}"
+                                   Style="{DynamicResource Text_PrimaryHeader}"
                                    MouseDown="IsPinnedTextBlock_OnMouseDown">
                             Pin Level
                         </TextBlock>
@@ -158,30 +161,23 @@
                         <TextBlock Name="TotalElevationTitle"
                                    Margin="0"
                                    TextAlignment="Center"
-                                   Style="{StaticResource Text_PrimaryHeader}"
+                                   Style="{DynamicResource Text_PrimaryHeader}"
                                    Text="Total Elevation = "/>
 
                         <TextBlock Name="TotalElevationTextBlock"
                                    Margin="0"
                                    TextAlignment="Center"
-                                   Style="{StaticResource Text_PrimaryHeader}"
+                                   Style="{DynamicResource Text_PrimaryHeader}"
                                    Text="{Binding TotalElevation, UpdateSourceTrigger=PropertyChanged}"
-                                   Foreground="{StaticResource Brush_Accent1}"
+                                   Foreground="{DynamicResource Brush_Accent1}"
                                    />
                     </StackPanel>
 
                 </Grid>
 
 
-
-
-
-
-
-
-
                 <TextBlock Margin="0 30 0 15" 
-                           Style="{StaticResource Text_PrimaryHeader}"
+                           Style="{DynamicResource Text_PrimaryHeader}"
                            FontSize="20">
                     Level Name
                 </TextBlock>
@@ -199,35 +195,35 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Margin="0" Grid.Column="0" TextAlignment="Center" 
-                                   Style="{StaticResource Text_PrimaryHeader}">Prefix</TextBlock>
+                                   Style="{DynamicResource Text_PrimaryHeader}">Prefix</TextBlock>
                     <TextBlock Margin="0" Grid.Column="1" TextAlignment="Center" 
-                                   Style="{StaticResource Text_PrimaryHeader}">Serial</TextBlock>
+                                   Style="{DynamicResource Text_PrimaryHeader}">Serial</TextBlock>
                     <TextBlock Margin="0" Grid.Column="2" TextAlignment="Center" 
-                                   Style="{StaticResource Text_PrimaryHeader}">Level Name</TextBlock>
+                                   Style="{DynamicResource Text_PrimaryHeader}">Level Name</TextBlock>
                     <TextBlock Margin="0" Grid.Column="3" TextAlignment="Center" 
-                                   Style="{StaticResource Text_PrimaryHeader}">Discipline</TextBlock>
+                                   Style="{DynamicResource Text_PrimaryHeader}">Discipline</TextBlock>
 
                     <TextBox Tag="Prefix"
                              IsEnabled="{Binding IsEnabledPrefix}"
-                             Grid.Column="0" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
+                             Grid.Column="0" Grid.Row="1" Style="{DynamicResource TextBox_Default_Centered}"
                              Text="{Binding LevelPrefix, UpdateSourceTrigger=PropertyChanged}"
                              GotFocus="TextBox_OnGotFocus"
                              />
                     <TextBox Tag="00" 
                              IsEnabled="{Binding IsEnabledSerial}"
-                             Grid.Column="1" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
+                             Grid.Column="1" Grid.Row="1" Style="{DynamicResource TextBox_Default_Centered}"
                              Text="{Binding LevelSerial, UpdateSourceTrigger=PropertyChanged}"
                              GotFocus="TextBox_OnGotFocus"
                              />
                     <TextBox Tag="Name" 
                              IsEnabled="{Binding IsEnabledName}"
-                             Grid.Column="2" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
+                             Grid.Column="2" Grid.Row="1" Style="{DynamicResource TextBox_Default_Centered}"
                              Text="{Binding LevelName, UpdateSourceTrigger=PropertyChanged}"
                              GotFocus="TextBox_OnGotFocus"
                              />
-                    <TextBox Tag="Disc}" 
+                    <TextBox Tag="Disc" 
                              IsEnabled="{Binding IsEnabledDiscipline}"
-                             Grid.Column="3" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
+                             Grid.Column="3" Grid.Row="1" Style="{DynamicResource TextBox_Default_Centered}"
                              Text="{Binding LevelDiscipline, UpdateSourceTrigger=PropertyChanged}"
                              GotFocus="TextBox_OnGotFocus"
                              />
@@ -239,12 +235,12 @@
                     HorizontalAlignment="Right"
                     Orientation="Horizontal">
                     <Button 
-                        Style="{StaticResource Button_Default_Alt}" 
+                        Style="{DynamicResource Button_Default_Alt}" 
                         Content="Cancel"
-                        Click="Close_OnClick"
+                        Command="{Binding CloseCommand}"
                         Margin="0 20 20 0" />
                     <Button 
-                        Style="{StaticResource Button_Accent}" 
+                        Style="{DynamicResource Button_Accent}" 
                         Content="Create"
                         Command="{Binding CreateLevelCommand}"
                         Margin="0 15 0 0"/>
@@ -260,27 +256,37 @@
             <!--<fa:IconImage Margin="0 -5 20 0"
                           Icon="CaretDown"
                           Width="30"
-                          Foreground="{StaticResource Brush_Accent2}" />-->
+                          Foreground="{DynamicResource Brush_Accent2}" />-->
             <TextBlock Width="auto"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
                        Margin="0"
-                       Style="{StaticResource Text_PrimaryHeader}"
+                       Style="{DynamicResource Text_PrimaryHeader}"
                        FontSize="20">
                 Create a level
             </TextBlock>
+            <!--<CheckBox 
+                Style="{DynamicResource CheckBox_Default}" 
+                Margin="40 0 0 0" 
+                VerticalAlignment="Center" 
+                IsChecked="{Binding DarkModeCheck}"/>
+            <TextBlock 
+                Style="{DynamicResource Text_PrimaryText}" 
+                Margin="10 3 0 0" 
+                VerticalAlignment="Center" 
+                Text="Darkmode (Under Development)"/>-->
         </StackPanel>
 
         <Line X1="0"
               Y1="70"
               X2="1300"
               Y2="70"
-              Stroke="{StaticResource Brush_Accent1}"
+              Stroke="{DynamicResource Brush_Accent1}"
               StrokeThickness="2" />
         <Button 
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
-            Style="{StaticResource Button_Default}" 
+            Style="{DynamicResource Button_Default}" 
             Content="Open Settings"
             Command="{Binding OpenSettings}"
             Margin="20 20 20 20" 

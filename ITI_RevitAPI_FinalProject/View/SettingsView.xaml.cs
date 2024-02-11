@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using Autodesk.Revit.DB;
 using ITI_RevitAPI_FinalProject.ViewModel;
 
 namespace ITI_RevitAPI_FinalProject.View
@@ -13,22 +14,13 @@ namespace ITI_RevitAPI_FinalProject.View
         {
             InitializeComponent();
             DataContext = SettingsVM.Instance;
-            SettingsVM.Window = this;
         }
+        private void OnInitializeCompleted(object sender, DependencyPropertyChangedEventArgs e) => SettingsVM.Instance.OnWindowInitialized(sender);
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
 
-        private void MinimizeButton(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-
-        private void CloseButton(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
     }
 }

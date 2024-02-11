@@ -15,7 +15,7 @@
         ResizeMode="NoResize"
         MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Window.Resources>
-        <ResourceDictionary Source="pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Light_Theme.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/LightTheme/Light_Colors.xaml" />
     </Window.Resources>
     <Grid>
         <Border 
@@ -29,6 +29,10 @@
                 <StackPanel 
                     Orientation="Horizontal"
                     HorizontalAlignment="Center">
+                    <Button 
+                        Content="Close"
+                        Width="120" Click="Button_Click"
+                        ></Button>
                     <TextBox
                         HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center"
@@ -49,8 +53,7 @@
                     <TextBlock 
                         Margin="10 3 0 0" 
                         VerticalAlignment="Center" 
-                        Text="Darkmode"
-                        Foreground="{DynamicResource Brush_Text_Primary}"/>
+                        Text="Darkmode (Under Development)"/>
                 </StackPanel>
             </StackPanel>
             </Border>

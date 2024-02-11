@@ -13,23 +13,8 @@ namespace ITI_RevitAPI_FinalProject.View
         {
             InitializeComponent();
             DataContext = FromExcelVM.Instance;
-            FromExcelVM.Window = this;
         }
-
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
-
-        private void MinimizeButton(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-
-        private void CloseButton(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => DragMove();
+        private void OnInitializeCompleted(object sender, DependencyPropertyChangedEventArgs e) => FromExcelVM.Instance.OnWindowInitialized(sender);
     }
 }

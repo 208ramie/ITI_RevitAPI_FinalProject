@@ -13,30 +13,34 @@
         WindowStyle="None"
         Background="Transparent"
         ResizeMode="NoResize"
+        DataContextChanged="OnInitializeCompleted"
         MouseDown="WorksetCreatorView_OnMouseDown">
 
-
     <Window.Resources>
-        <ResourceDictionary Source="pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Light_Resources.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Light_Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
 
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <vm:ViewPlanCreatorVM x:Name="Instance" />
-    </Window.DataContext>
+    </Window.DataContext>-->
 
     <Grid>
         <Border 
-            Background="{StaticResource Brush_Background_Primary}"
-            BorderBrush="{StaticResource Brush_Border}" 
+            Background="{DynamicResource Brush_Background_Primary}"
+            BorderBrush="{DynamicResource Brush_Border}" 
             BorderThickness="2" 
             CornerRadius="15"
             Padding="20">
             <StackPanel>
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                    <Button Style="{StaticResource Button_Info}" 
-                            Width="30" Height="30" Click="Minimize_OnClick"></Button>
-                    <Button Style="{StaticResource Button_Accent}" 
-                            Width="30" Height="30" Click="Close_OnClick"></Button>
+                    <Button Style="{DynamicResource Button_Info}" 
+                            Width="30" Height="30" Command="{Binding MinimizeCommand}"></Button>
+                    <Button Style="{DynamicResource Button_Accent}" 
+                            Width="30" Height="30" Command="{Binding CloseCommand}"></Button>
                 </StackPanel>
 
                 <Grid Margin="0,40,0,0">
@@ -48,7 +52,7 @@
                     <TextBlock 
                                Grid.Column="0"
                                VerticalAlignment="Center"
-                               Style="{StaticResource Text_PrimaryHeader}"
+                               Style="{DynamicResource Text_PrimaryHeader}"
                                FontSize="23">
                         Select level
                     </TextBlock>
@@ -57,7 +61,7 @@
 
                     <ComboBox Name="LevelPickerComboBox"
                               Grid.Column="1"
-                              Style="{StaticResource ComboBoxDefault}"
+                              Style="{DynamicResource ComboBoxDefault}"
                               ItemsSource="{Binding DocumentLevels}"
                               DisplayMemberPath="Name"
                               SelectedItem="{Binding SelectedLevel, UpdateSourceTrigger=PropertyChanged}"
@@ -68,7 +72,7 @@
 
 
                 <TextBlock Margin="0 15 0 10" 
-                           Style="{StaticResource Text_PrimaryHeader}"
+                           Style="{DynamicResource Text_PrimaryHeader}"
                            FontSize="23">
                     View Plan Name
                 </TextBlock>
@@ -86,32 +90,32 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Margin="0" Grid.Column="0" TextAlignment="Center" 
-                                   Style="{StaticResource Text_PrimaryHeader}">Prefix</TextBlock>
+                                   Style="{DynamicResource Text_PrimaryHeader}">Prefix</TextBlock>
                     <TextBlock Margin="0" Grid.Column="1" TextAlignment="Center" 
-                                   Style="{StaticResource Text_PrimaryHeader}">Serial</TextBlock>
+                                   Style="{DynamicResource Text_PrimaryHeader}">Serial</TextBlock>
                     <TextBlock Margin="0" Grid.Column="2" TextAlignment="Center" 
-                                   Style="{StaticResource Text_PrimaryHeader}">View Name</TextBlock>
+                                   Style="{DynamicResource Text_PrimaryHeader}">View Name</TextBlock>
                     <TextBlock Margin="0" Grid.Column="3" TextAlignment="Center" 
-                                   Style="{StaticResource Text_PrimaryHeader}">Discipline</TextBlock>
+                                   Style="{DynamicResource Text_PrimaryHeader}">Discipline</TextBlock>
 
                     <TextBox Tag="LV"
                              IsEnabled="{Binding IsEnabledPrefix}"
-                             Grid.Column="0" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
+                             Grid.Column="0" Grid.Row="1" Style="{DynamicResource TextBox_Default_Centered}"
                              Text="{Binding ViewPrefix, UpdateSourceTrigger=PropertyChanged}"
                              />
                     <TextBox Tag="00" 
                              IsEnabled="{Binding IsEnabledSerial}"
-                             Grid.Column="1" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
+                             Grid.Column="1" Grid.Row="1" Style="{DynamicResource TextBox_Default_Centered}"
                              Text="{Binding ViewSerial, UpdateSourceTrigger=PropertyChanged}"
                              />
                     <TextBox Tag="Name" 
                              IsEnabled="{Binding IsEnabledName}"
-                             Grid.Column="2" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
+                             Grid.Column="2" Grid.Row="1" Style="{DynamicResource TextBox_Default_Centered}"
                              Text="{Binding ViewName, UpdateSourceTrigger=PropertyChanged}"
                              />
                     <TextBox Tag="Disc" 
                              IsEnabled="{Binding IsEnabledDiscipline}"
-                             Grid.Column="3" Grid.Row="1" Style="{StaticResource TextBox_Default_Centered}"
+                             Grid.Column="3" Grid.Row="1" Style="{DynamicResource TextBox_Default_Centered}"
                              Text="{Binding ViewDiscipline, UpdateSourceTrigger=PropertyChanged}"
                              />
                 </Grid>
@@ -119,12 +123,12 @@
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button 
-                        Style="{StaticResource Button_Default_Alt}" 
+                        Style="{DynamicResource Button_Default_Alt}" 
                         Content="Cancel"
-                        Click="Close_OnClick"
+                        Command="{Binding CloseCommand}"
                         Margin="0 20 20 0" />
                     <Button 
-                        Style="{StaticResource Button_Accent}" 
+                        Style="{DynamicResource Button_Accent}" 
                         Content="Create"
                         Command="{Binding CreateViewPlanCommand}"
                         Margin="0 20 0 0" />
@@ -138,13 +142,13 @@
             <!--<fa:IconImage Margin="0 -5 20 0"
                           Icon="RectangleList"
                           Width="30"
-                          Foreground="{StaticResource Brush_Accent2}" />-->
+                          Foreground="{DynamicResource Brush_Accent2}" />-->
 
             <TextBlock Width="auto"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
                        Margin="0"
-                       Style="{StaticResource Text_PrimaryHeader}"
+                       Style="{DynamicResource Text_PrimaryHeader}"
                        FontSize="20">
                 Create a View Plan
             </TextBlock>
@@ -154,12 +158,12 @@
               Y1="70"
               X2="1300"
               Y2="70"
-              Stroke="{StaticResource Brush_Accent1}"
+              Stroke="{DynamicResource Brush_Accent1}"
               StrokeThickness="2" />
         <Button 
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
-            Style="{StaticResource Button_Default}" 
+            Style="{DynamicResource Button_Default}" 
             Content="Open Settings"
             Command="{Binding OpenSettings}"
             Margin="20 20 20 20" 

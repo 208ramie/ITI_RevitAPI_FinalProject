@@ -14,31 +14,23 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
     {
 		private string _discipline;
 		private string _name;
-
 		public string Discipline
 		{
 			get => _discipline;
             set { _discipline = value; OnPropertyChanged(); }
 		}
-
 		public string Name
 		{
 			get => _name;
 			set { _name = value; OnPropertyChanged(); }
 		}
-
-
         public string WorksetFullName => Discipline + "-" + Name;
-
         public RelayCommand CreateCommand { get; set; }
-
-        public WorksetCreatorVM()
-            => CreateCommand = new RelayCommand(CreateM);
-
+        public WorksetCreatorVM() => CreateCommand = new RelayCommand(CreateM);
         private void CreateM(object obj)
         {
             RHelper.CreateWorkset(WorksetFullName);
-            Window.Close();
+            window.Close();
         }
     }
 }

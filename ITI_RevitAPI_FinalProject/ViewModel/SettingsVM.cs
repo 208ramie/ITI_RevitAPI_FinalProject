@@ -67,19 +67,9 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
 
         #endregion
 
-        private bool _darkModeCheck;
-        public bool DarkModeCheck { 
-            get => _darkModeCheck;
-            set
-            {
-                _darkModeCheck = value;
-                OnPropertyChanged();
-                if(_darkModeCheck) SwitchToDarkTheme();
-                else SwitchToLightTheme();
-            }
-        }
+
         public RelayCommand Run { get; set; }
         public SettingsVM() => Run = new RelayCommand(RunM);
-        public void RunM(object obj) => Window.Close();
+        public void RunM(object obj) => window.Close();
     }
 }

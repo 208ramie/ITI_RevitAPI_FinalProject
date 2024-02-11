@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -14,9 +15,8 @@ using ITI_RevitAPI_FinalProject.View;
 
 namespace ITI_RevitAPI_FinalProject.ViewModel
 {
-    internal class LevelCreatorVM : ViewModelBase<LevelCreatorVM>
+    public class LevelCreatorVM : ViewModelBase<LevelCreatorVM>
     {
-
         #region Fields
         private string _levelPrefix;
         private string _levelSerial;
@@ -30,7 +30,6 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
         private double _totalElevation;
         private bool _isViewPlan = false;
         #endregion"
-
         #region properties
         public bool IsViewPlan
         {
@@ -124,12 +123,10 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
         }
 
         #endregion
-
         #region Commands
         public RelayCommand CreateLevelCommand { get; set; }
         public RelayCommand OpenSettings { get; set; }
         #endregion
-
         #region Constructor
         public LevelCreatorVM()
         {
@@ -139,8 +136,6 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
             OpenSettings = new RelayCommand(OpenSettingsCommand);
         }
         #endregion
-
-
         #region Enable Disable Textbox Props
 
 
@@ -171,12 +166,11 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
 
 
         #endregion
-
-
         #region OnInstanceCalled
-
-        protected override void onInstanceCalled()
+        public override void OnWindowInitialized(object obj)
         {
+            base.OnWindowInitialized(obj);
+
             if (!string.IsNullOrEmpty(SettingsVM.Instance.LevelPrefix))
             {
                 LevelPrefix = SettingsVM.Instance.LevelPrefix;
@@ -218,10 +212,7 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
                 IsEnabledSerial = true;
             }
         }
-
         #endregion
-
-
         #region CommandMethods
         private void CreateLevelM(object obj)
         {
@@ -230,15 +221,14 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
             else
                 RHelper.CreateLevel(SelectedLevel, LevelElevation, CombinedLevelName, IsLevelPinned, IsViewPlan);
 
-            Window.Close();
+            window.Close();
         }
         private void OpenSettingsCommand(object obj)
         {
-            Window.Close();
+            window.Close();
             new SettingsView().ShowDialog();
         }
         #endregion
-
         #region Helpers
         private void UpdateTotalElevation()
         {
@@ -256,6 +246,5 @@ namespace ITI_RevitAPI_FinalProject.ViewModel
             }
         }
         #endregion
-
     }
 }

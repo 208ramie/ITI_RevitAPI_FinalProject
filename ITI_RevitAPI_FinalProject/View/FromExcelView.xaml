@@ -12,28 +12,36 @@
         WindowStyle="None"
         Background="Transparent"
         ResizeMode="NoResize"
+        DataContextChanged="OnInitializeCompleted"
         MouseLeftButtonDown="Window_MouseLeftButtonDown">
 
     <Window.Resources>
-        <ResourceDictionary Source="pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Light_Resources.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Light_Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
+
+    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="561*"/>
             <ColumnDefinition Width="169*"/>
         </Grid.ColumnDefinitions>
         <Border 
-            Background="{StaticResource Brush_Background_Primary}"
-            BorderBrush="{StaticResource Brush_Border}" 
+            Background="{DynamicResource Brush_Background_Primary}"
+            BorderBrush="{DynamicResource Brush_Border}" 
             BorderThickness="2" 
             CornerRadius="15"
             Padding="20" Grid.ColumnSpan="2">
             <StackPanel>
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                    <Button Style="{StaticResource Button_Info}" 
-                            Width="30" Height="30" Click="MinimizeButton"></Button>
-                    <Button Style="{StaticResource Button_Accent}" 
-                            Width="30" Height="30" Click="CloseButton"></Button>
+                    <Button Style="{DynamicResource Button_Info}" 
+                            Width="30" Height="30" Command="{Binding MinimizeCommand}"></Button>
+                    <Button Style="{DynamicResource Button_Accent}" 
+                            Width="30" Height="30" Command="{Binding CloseCommand}"></Button>
                 </StackPanel>
                 <Grid Margin="0,30,0,10">
                     <Grid.ColumnDefinitions>
@@ -42,16 +50,16 @@
                         <ColumnDefinition Width="150"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock 
-                        Style="{StaticResource Text_PrimaryHeader}" 
+                        Style="{DynamicResource Text_PrimaryHeader}" 
                         Text="Excel File"/>
                     <TextBox 
                         Text="{Binding BrowseTextBox}"
                         Grid.Column="1" 
-                        Style="{StaticResource TextBox_Default}"
+                        Style="{DynamicResource TextBox_Default}"
                         Tag="File Path"/>
                     <Button
                         Grid.Column="2"
-                        Style="{StaticResource Button_Default_Alt}"
+                        Style="{DynamicResource Button_Default_Alt}"
                         Content="Browse"
                         Command="{Binding BrowseCommand}"/>
 
@@ -59,7 +67,7 @@
                 <StackPanel 
                     HorizontalAlignment="Center">
                     <Button 
-                        Style="{StaticResource Button_Accent}" 
+                        Style="{DynamicResource Button_Accent}" 
                         Content="Create"
                         Command="{Binding CreateCommand}"/>
                 </StackPanel>
@@ -68,14 +76,14 @@
         </Border>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20 29 0 0" Grid.ColumnSpan="2" >
             <!--<fa:IconImage Margin="0 -5 20 0" Icon="ChartBar" Width="30" Foreground="{StaticResource Brush_Accent2}"/>-->
-            <TextBlock Width="auto" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" Style="{StaticResource Text_PrimaryHeader}" FontSize="20">
+            <TextBlock Width="auto" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" Style="{DynamicResource Text_PrimaryHeader}" FontSize="20">
                 Open From Excel
             </TextBlock>
         </StackPanel >
         <Line
             X1="0" Y1="70"
             X2="1300" Y2="70"
-            Stroke="{StaticResource Brush_Accent1}"
+            Stroke="{DynamicResource Brush_Accent1}"
             StrokeThickness="2" Grid.ColumnSpan="2"/>
 
     </Grid>

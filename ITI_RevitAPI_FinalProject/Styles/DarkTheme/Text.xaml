@@ -3,7 +3,7 @@
 
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Light_Theme.xaml" />
+        <ResourceDictionary Source="Dark_Colors.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 
@@ -62,7 +62,7 @@
         <Setter Property="FontFamily" Value="Rubik" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
         <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="Foreground" Value="{StaticResource Brush_BackgroundDisabled}" />
+        <Setter Property="Foreground" Value="{StaticResource Brush_Text_Secondary}" />
         <Setter Property="FontSize"  Value="14" />
         <Setter Property="FontWeight" Value="Medium" />
     </Style>

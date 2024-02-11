@@ -17,8 +17,7 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
         {
             try
             {
-                SettingsView settingsView = new SettingsView();
-                settingsView.ShowDialog();
+                new SettingsView().ShowDialog();
 
                 return Result.Succeeded;
             }
