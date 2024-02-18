@@ -25,13 +25,13 @@ namespace ITI_RevitAPI_FinalProject.Utilities
         {
             CloseCommand = new RelayCommand(Close);
             MinimizeCommand = new RelayCommand(Minimize);
-            OnWindowMouseDown = new RelayCommand(DragMode);
+            OnWindowMouseDown = new RelayCommand(DragMove);
             OnWindowInitializedCommand = new RelayCommand(OnWindowInitialized);
         }
 
         private void Minimize(object obj) => window.WindowState = WindowState.Minimized;
         private void Close(object obj) => window.Close();
-        private void DragMode(object obj) => window.DragMove();
+        private void DragMove(object obj) => window.DragMove();
 
         #endregion
         #region Notify Prop Changed
@@ -74,14 +74,14 @@ namespace ITI_RevitAPI_FinalProject.Utilities
         protected void SwitchToDarkTheme()
         {
             string themePath = "pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Dark_Theme.xaml";
-            var newTheme = new ResourceDictionary { Source = new Uri(themePath, UriKind.RelativeOrAbsolute) }; 
+            ResourceDictionary newTheme = new ResourceDictionary { Source = new Uri(themePath, UriKind.RelativeOrAbsolute) }; 
             window.Resources.Clear();
             window.Resources.MergedDictionaries.Add(newTheme);
         }
         protected void SwitchToLightTheme()
         {
             string themePath = "pack://application:,,,/ITI_RevitAPI_FinalProject;component/Styles/Light_Theme.xaml";
-            var newTheme = new ResourceDictionary { Source = new Uri(themePath, UriKind.RelativeOrAbsolute) };
+            ResourceDictionary newTheme = new ResourceDictionary { Source = new Uri(themePath, UriKind.RelativeOrAbsolute) };
             window.Resources.Clear();
             window.Resources.MergedDictionaries.Add(newTheme);
         }

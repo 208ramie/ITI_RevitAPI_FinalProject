@@ -17,7 +17,7 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
             RHelper.UIDoc = commandData.Application.ActiveUIDocument;
             try
             {
-                RHelper.RenameGrids();
+                // RHelper.RenameGrids();
                 message = "Renamed!"; 
                 return Result.Succeeded; 
             }

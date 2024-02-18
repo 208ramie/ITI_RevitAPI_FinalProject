@@ -1,4 +1,5 @@
 ﻿using System;
+
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -54,7 +55,8 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
         //    =>  new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Levels).WhereElementIsNotElementType().Cast<Level>().ToList();
         public static List<Level> GetAllLevelsInDocument()
             => new FilteredElementCollector(Doc).OfClass(typeof(Level)).Cast<Level>()
-                .OrderByDescending(l => l.Elevation).ToList();  
+                .OrderByDescending(l => l.Elevation).ToList();
+
         #endregion
 
         #region Core methods
@@ -74,11 +76,12 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
                 {
                     trans.Start();
                     // Create a new view plan
-                    ViewPlan newViewPlan = ViewPlan.Create(Doc, viewFamily?.Id, targetLevel.Id);
+                    ViewPlan newViewPlan = ViewPlan.Create(Doc, viewFamily?.Id, targetLevel?.Id);
                     newViewPlan.Name = viewName;
                     trans.Commit();
                     return newViewPlan;
                 }
+
             }
             catch (Exception e)
             {
@@ -170,42 +173,6 @@ namespace ITI_RevitAPI_FinalProject.RevitManager
         }
 
         #region RenameGrids
-        public static void RenameGrids()
-        {
-            try
-            {
-                // Get all grids in the document
-                List<Grid> allGrids = GetAllGridsInDocument();
-
-                // Filter them according to their orientation
-                List<Grid> hzGrids, vtGrids, nonOrthoGrids;
-                FilterGrids(allGrids, out hzGrids, out vtGrids, out nonOrthoGrids);
-                
-                // Order the grids
-                var orderHzGrids = GetOrderedGridsByAxis(hzGrids, Direction.Horizontal);
-                var orderVtGrids = GetOrderedGridsByAxis(vtGrids, Direction.Vertical);
-
-                // rename them to sth weird, then desired
-                using (Transaction trans = new Transaction(Doc, "Change grid names"))
-                {
-                    Random rand = new Random();
-                    trans.Start();
-                    RenameGrids(orderHzGrids,rand.Next(int.MaxValue/2));
-                    RenameGrids(orderVtGrids, rand.Next(int.MaxValue/2));
-
-                    RenameGrids(orderHzGrids, 'A');
-                    RenameGrids(orderVtGrids, 1);
-
-                    trans.Commit();
-                }
-            }
-            catch (Exception e)
-            {
-                TDError(e);
-                throw;
-            }
-        }
-
         public static List<Grid> GetAllGridsInDocument() 
             => new FilteredElementCollector(Doc)
                 .OfClass(typeof(Grid))
